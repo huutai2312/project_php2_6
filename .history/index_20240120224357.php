@@ -7,7 +7,7 @@ use App\controller\Controller;
 
 $router = new Router();
 $router
-    //Client
+//
     ->get('/', [Controller::class, 'index'])
     ->get('/sendmail', [Controller::class, 'sendMail'])
     ->get('/cua-hang', [Controller::class, 'cuahang'])

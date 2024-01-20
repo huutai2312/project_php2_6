@@ -72,13 +72,13 @@
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input2">Price <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="price" id="input2" placeholder=" Price" type="number" value="<?php echo $product['price']; ?>">
+                                        <input class="contact__form--input" name="price" id="input2" placeholder=" Price" type="nu" value="<?php echo $product['price']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input3">Quantity <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="quantity" id="input3" placeholder="Quantity" type="number" value="<?php echo $product['quantity']; ?>">
+                                        <input class="contact__form--input" name="quantity" id="input3" placeholder="Quantity" type="text" value="<?php echo $product['quantity']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-12">

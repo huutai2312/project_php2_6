@@ -297,12 +297,12 @@ class Controller
             $quantity = $_POST['quantity'];
             $shortDesc = $_POST['short_desc'];
             $longDesc = $_POST['long_desc'];
-
+        
             // Kiểm tra lựa chọn của người dùng
             if ($_POST['image_source'] === 'new') {
                 // Lựa chọn tải lên ảnh mới
                 $image = $_FILES['new_image']['name'];
-
+        
                 // Thực hiện tải lên hình ảnh mới
                 $targetDir = "public/uploads/";
                 $targetFile = $targetDir . basename($_FILES['new_image']['name']);
@@ -311,45 +311,23 @@ class Controller
                 // Lựa chọn chọn ảnh có sẵn
                 $image = $_POST['existing_image'];
             }
-
+        
             // Thực hiện gọi phương thức từ model để cập nhật sản phẩm trong cơ sở dữ liệu
             $productModel = new SanPham();
             $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
-
+        
             // Chuyển hướng về trang sửa sản phẩm sau khi cập nhật thành công
             $encodedId = urlencode($id);
             header("Location: /admin/edit_product?id=$encodedId");
             exit;
         }
-
+        
 
         $this->importHeader();
         include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
 
-    public function adminDeleteProduct()
-    {
-        session_start();
-        // Kiểm tra xác thực người dùng là quản trị viên
-        $user = $_SESSION['user'];
-        if ($user['is_admin'] != 1) {
-            echo "<script>alert('Bạn không có quyền truy cập!')</script>";
-            echo "<script>window.location.href='/';</script>";
-            exit;
-        }
-
-        // Lấy ID của sản phẩm cần xóa từ tham số truyền vào
-        $id = $_GET['id'];
-
-        // Thực hiện gọi phương thức xóa sản phẩm từ model
-        $sanPhamModel = new SanPham();
-        $sanPhamModel->adminDeleteProduct($id);
-
-        // Chuyển hướng về trang danh sách sản phẩm sau khi xóa thành công
-        header("Location: /admin/products");
-        exit;
-    }
 
 
     public function adminOrders()
@@ -361,4 +339,5 @@ class Controller
         include "../project_php2_6/app/view/admin/orders.php";
         $this->importFooter();
     }
+
 }

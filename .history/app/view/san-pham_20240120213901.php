@@ -66,6 +66,19 @@
         </div>
     </section>
 
+    <?php
+    // if (isset($_SESSION['user'])) : 
+    ?>
+    <!-- <button class="quickview__cart--btn primary__btn" type="submit" name="addToCart">Add to cart</button> -->
+    <?php
+    // else : 
+    ?>
+    <!-- <a href="/login"><button class="quickview__cart--btn primary__btn">Login</button></a> -->
+    <?php
+    // endif; 
+    ?>
+    <!-- End product details section -->
+
     <!-- Start product details tab section -->
     <section class="product__details--tab__section section--padding">
         <div class="container">

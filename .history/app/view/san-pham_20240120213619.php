@@ -49,14 +49,16 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <?php
                             if (isset($_SESSION['user'])) {
                                 echo '<button class="quickview__cart--btn primary__btn" type="submit" name="addToCart">Add to cart</button>';
-                            } else {
-                                echo '<a href="/tai-khoan">Please login.</a>';
+                            }else {
+                                echo '';
                             }
                             ?>
-                            <!-- <button class="quickview__cart--btn primary__btn" type="submit" name="addToCart">Add to cart</button> -->
+                            <button class="quickview__cart--btn primary__btn" type="submit" name="addToCart">Add to cart</button>
+                            
                         </form>
                         <hr>
                         <p>ID Product: <?php echo $productDetail['id'] ?></p>
@@ -65,6 +67,19 @@
             </div>
         </div>
     </section>
+
+    <?php
+    // if (isset($_SESSION['user'])) : 
+    ?>
+    <!-- <button class="quickview__cart--btn primary__btn" type="submit" name="addToCart">Add to cart</button> -->
+    <?php
+    // else : 
+    ?>
+    <!-- <a href="/login"><button class="quickview__cart--btn primary__btn">Login</button></a> -->
+    <?php
+    // endif; 
+    ?>
+    <!-- End product details section -->
 
     <!-- Start product details tab section -->
     <section class="product__details--tab__section section--padding">
@@ -95,11 +110,11 @@
 <!-- Thêm vào phần cuối của file san-pham.php -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Bắt sự kiện khi người dùng nhấn nút "Add to cart"
-        $('form').submit(function(event) {
+        $('form').submit(function (event) {
             event.preventDefault();
-
+            
             // Lấy thông tin sản phẩm
             var productId = <?php echo $productDetail['id']; ?>;
             // var productImage = <?php echo $productDetail['image']; ?>;

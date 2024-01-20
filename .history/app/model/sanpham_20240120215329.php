@@ -143,7 +143,7 @@ class SanPham
         $conn = $this->getConnection();
         $sql = "DELETE FROM ps_products WHERE id = :id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 
         try {
             $stmt->execute();

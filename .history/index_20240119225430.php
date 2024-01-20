@@ -7,7 +7,6 @@ use App\controller\Controller;
 
 $router = new Router();
 $router
-    //Client
     ->get('/', [Controller::class, 'index'])
     ->get('/sendmail', [Controller::class, 'sendMail'])
     ->get('/cua-hang', [Controller::class, 'cuahang'])
@@ -22,7 +21,6 @@ $router
     ->get('/cart', [Controller::class, 'cart'])
     ->get('/checkout', [Controller::class, 'checkout'])
     ->post('/checkout', [Controller::class, 'checkout'])
-    //Admin
     ->get('/admin', [Controller::class, 'adminIndex'])
     ->get('/admin/products', [Controller::class, 'adminProducts'])
     ->get('/admin/add_product', [Controller::class, 'adminAddProduct'])
@@ -30,7 +28,6 @@ $router
     ->get('/admin/edit_product', [Controller::class, 'adminEditProduct'])
     ->get('/admin/update_product', [Controller::class, 'adminUpdateProduct'])
     ->post('/admin/update_product', [Controller::class, 'adminUpdateProduct'])
-    ->get('/admin/delete_product', [Controller::class, 'adminDeleteProduct'])
     ->get('/admin/orders', [Controller::class, 'adminOrders']);
 
 echo $router->resolve(

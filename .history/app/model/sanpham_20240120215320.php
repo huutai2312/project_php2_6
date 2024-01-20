@@ -141,9 +141,9 @@ class SanPham
     public function adminDeleteProduct($id)
     {
         $conn = $this->getConnection();
-        $sql = "DELETE FROM ps_products WHERE id = :id";
+        $sql = "DELETE FROM ps_products WHERE id = :product_id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, \PDO::PARAM_INT);
 
         try {
             $stmt->execute();

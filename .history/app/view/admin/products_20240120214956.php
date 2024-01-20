@@ -85,7 +85,7 @@
                                             <td class="account__table--body__child--items"><?php echo $product["date_created"] ?></td>
                                             <td class="account__table--body__child--items">
                                                 <a href="/admin/edit_product?id=<?php echo $product['id']; ?>"><button class="primary__btn">Edit</button></a>
-                                                <a href="/admin/delete_product?id=<?php echo $product['id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"><button class="primary__btn">Delete</button></a>
+                                                <a href="/admin/delete_product?id=<?php echo $product['id']; ?>"><button class="primary__btn">Dele</button></a>
                                             </td>
                                         </tr>
                                     <?php

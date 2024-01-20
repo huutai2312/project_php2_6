@@ -28,7 +28,7 @@ class SanPham
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
+    
     public function getAllProductsDesc()
     {
         $conn = $this->getConnection();
@@ -137,19 +137,13 @@ class SanPham
             throw $e;
         }
     }
-
-    public function adminDeleteProduct($id)
-    {
+    
+    public function adminDeleteProduct($id){
         $conn = $this->getConnection();
-        $sql = "DELETE FROM ps_products WHERE id = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-        try {
-            $stmt->execute();
-        } catch (PDOException $e) {
-            // echo "Lỗi: " . $e->getMessage();
-            throw $e;
-        }
+        $query = "UPDATE ps_products 
+              SET name = :name, price = :price, quantity = :quantity, image = :image, short_desc = :short_desc, long_desc = :long_desc
+              WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     }
 }

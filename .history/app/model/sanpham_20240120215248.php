@@ -28,7 +28,7 @@ class SanPham
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
+    
     public function getAllProductsDesc()
     {
         $conn = $this->getConnection();
@@ -137,19 +137,20 @@ class SanPham
             throw $e;
         }
     }
-
-    public function adminDeleteProduct($id)
-    {
+    
+    public function adminDeleteProduct($id){
         $conn = $this->getConnection();
-        $sql = "DELETE FROM ps_products WHERE id = :id";
+        $sql = "DELETE FROM products WHERE id = :product_id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, \PDO::PARAM_INT);
+        
+        // Thực hiện truy vấn
+        $stmt->execute();
 
-        try {
-            $stmt->execute();
-        } catch (PDOException $e) {
-            // echo "Lỗi: " . $e->getMessage();
-            throw $e;
-        }
+        // Đóng kết nối CSDL
+        $db->close();
+
+        // Trả về kết quả xóa (có thể kiểm tra số dòng ảnh hưởng để biết xóa thành công hay không)
+        return $stmt->rowCount();
     }
 }
