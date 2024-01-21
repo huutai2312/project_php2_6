@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 20, 2024 lúc 02:29 PM
+-- Thời gian đã tạo: Th1 21, 2024 lúc 03:01 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -49,7 +49,7 @@ INSERT INTO `ps_products` (`id`, `name`, `price`, `short_desc`, `long_desc`, `qu
 (6, 'Template HTML, CSS YTUUU', '76000000', 'Template HTML HBB dfbf4455', 'Dell XPS 13 là chiếc laptop chuyên đồ họa và công việc nặng, với thiết kế siêu mỏng và màn hình InfinityEdge.', 67000000, 0, 'img19_1920x1200.png', '2024-01-05'),
 (7, 'jkvjm', '5678', 'hbjbhb', '78vuyhkjhjkmv', 767587, NULL, 'imager_4_79676_700.jpg', '2024-01-19'),
 (8, 'abc123', '2312', 'rtebvdfdvfẻhfbg', '3t35rde54gse45fvfbg', 345234, NULL, '108y_chkmeqbkc5m20rb1e9lmat39dpjg-removebg-preview.png', '2024-01-19'),
-(9, 'cc2', '333', 'cgfnfcgjcssc', 'dgtntj35y3gerv5y\r\nưegv34gvvfs', 423, NULL, '15_hinh-gif-anime-chill-gif-chill-dep-nhat.gif', '2024-01-20');
+(10, 'ddeoooommm', '32454', 'bevrfy6hj dsvvdsddcbb', 'ưeg354g34bb5gbsdvsdvcakjvbakjbvrvsdvsddsccdsac', 200, NULL, '416134988_1331954691537232_1547475080054229849_n.jpg', '2024-01-21');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -69,7 +69,7 @@ ALTER TABLE `ps_products`
 -- AUTO_INCREMENT cho bảng `ps_products`
 --
 ALTER TABLE `ps_products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

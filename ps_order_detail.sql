@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 20, 2024 lúc 02:29 PM
+-- Thời gian đã tạo: Th1 21, 2024 lúc 03:01 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -31,7 +31,8 @@ CREATE TABLE `ps_order_detail` (
   `id` int NOT NULL,
   `order_id` int DEFAULT NULL,
   `product_id` int DEFAULT NULL,
-  `quantity` int DEFAULT NULL
+  `quantity` int DEFAULT NULL,
+  `product_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
