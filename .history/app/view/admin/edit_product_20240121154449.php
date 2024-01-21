@@ -16,14 +16,6 @@
     <!-- Custom Style CSS -->
     <link rel="stylesheet" href="./../app/view/inc/assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Thư viện Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
-    <!-- Thư viện Bootstrap JS và jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -64,46 +56,68 @@
                 <div class="account__wrapper">
                     <div class="account__content">
                         <h2 class="account__content--title h3 mb-20">List Products | <em><a href="/admin/add_product">Add Product</a></em></h2>
-                        <form class="contact__form--inner" action="/admin/add_product" method="post" enctype="multipart/form-data">
+                        <form class="contact__form--inner" action="/admin/update_product?id=<?php echo $product['id']; ?>" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Name <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="name" placeholder="Name" type="text">
+                                        <input class="contact__form--input" name="product_id" id="input0" placeholder="ID Product: <?php echo $product['id']; ?>" type="text" value="<?php echo $product['id']; ?>" hidden>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Price <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="price" placeholder=" Price" type="text">
+                                        <label class="contact__form--label" for="input1">Name <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="name" id="input1" placeholder="Name" type="text" value="<?php echo $product['name']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Quantity <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="quantity" placeholder="Quantity" type="text">
+                                        <label class="contact__form--label" for="input2">Price <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="price" id="input2" placeholder=" Price" type="number" value="<?php echo $product['price']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Image <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="image" id="imageInput" placeholder="Image" type="file">
+                                        <label class="contact__form--label" for="input3">Quantity <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="quantity" id="input3" placeholder="Quantity" type="number" value="<?php echo $product['quantity']; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="contact__form--list mb-20">
+                                        <label class="contact__form--label" for="input4">Current Image</label>
+                                        <?php
+                                        $currentImage = "/public/uploads/" . $product['image']; // Lấy đường dẫn ảnh hiện tại từ dữ liệu sản phẩm
+                                        if (!empty($currentImage)) {
+                                            echo "<img src=\"$currentImage\" alt=\"Current Image\">";
+                                        } else {
+                                            echo "<p>No image available</p>";
+                                        }
+                                        ?>
+                                    </div>
+                                    <input type="hidden" name="current_image" value="<?php echo $currentImage; ?>">
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="contact__form--list mb-15">
+                                        <label class="contact__form--label" for="input5">Short Desc <span class="contact__form--label__star">*</span></label>
+                                        <textarea class="contact__form--textarea" name="short_desc" id="input5" placeholder="Short Desc"><?php echo $product['short_desc']; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label">Short Desc <span class="contact__form--label__star">*</span></label>
-                                        <textarea class="contact__form--textarea" name="short_desc" placeholder="Short Desc"></textarea>
+                                        <label class="contact__form--label" for="input6">Long Desc <span class="contact__form--label__star">*</span></label>
+                                        <textarea class="contact__form--textarea" name="long_desc" id="input6" placeholder="Long Desc"><?php echo $product['long_desc']; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label">Long Desc <span class="contact__form--label__star">*</span></label>
-                                        <textarea class="contact__form--textarea" name="long_desc" placeholder="Long Desc"></textarea>
+                                    <div class="contact__form--list mb-20">
+                                        <label class="contact__form--label" for="input7">New Image</label>
+                                        <input class="contact__form--input" name="new_image" id="input7" type="file">
+                                        <input type="hidden" name="image_source" value="<?php echo isset($_POST['image_source']) ? $_POST['image_source'] : 'existing'; ?>">
                                     </div>
                                 </div>
+
                             </div>
-                            <button class="contact__form--btn primary__btn" type="submit">Submit Now</button>
+                            <button class="contact__form--btn primary__btn" type="submit" name="btn_submit_edit_product">Submit Now</button>
                         </form>
                     </div>
                 </div>

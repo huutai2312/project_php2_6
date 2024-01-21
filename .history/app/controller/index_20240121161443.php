@@ -286,45 +286,42 @@ class Controller
     }
 
     public function adminUpdateProduct()
-    {
-        session_start();
+{
+    session_start();
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['product_id'];
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $quantity = $_POST['quantity'];
-            $shortDesc = $_POST['short_desc'];
-            $longDesc = $_POST['long_desc'];
-            $imageSource = $_POST['image_source'];
-            $keepCurrentImage = isset($_POST['keep_current_image']) && $_POST['keep_current_image'] == "1";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['product_id'];
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $quantity = $_POST['quantity'];
+        $shortDesc = $_POST['short_desc'];
+        $longDesc = $_POST['long_desc'];
+        $imageSource = $_POST['image_source'];
+        $keepCurrentImage = isset($_POST['keep_current_image']) && $_POST['keep_current_image'] == "1";
 
-            if ($imageSource === 'new' && !$keepCurrentImage) {
-                $image = $_FILES['new_image']['name'];
-                $targetDir = "public/uploads/";
-                $targetFile = $targetDir . basename($_FILES['new_image']['name']);
-                move_uploaded_file($_FILES['new_image']['tmp_name'], $targetFile);
-            } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
-                $image = $_POST['existing_image'];
-            } elseif ($keepCurrentImage) {
-                $productModel = new SanPham();
-                $existingProduct = $productModel->getProductById($id);
-                $image = $existingProduct['image'];
-            }
-
-            $productModel = new SanPham();
-            $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
-
-            $encodedId = urlencode($id);
-            header("Location: /admin/edit_product?id=$encodedId");
-            exit;
+        if ($imageSource === 'new' && !$keepCurrentImage) {
+            $image = $_FILES['new_image']['name'];
+            $targetDir = "public/uploads/";
+            $targetFile = $targetDir . basename($_FILES['new_image']['name']);
+            move_uploaded_file($_FILES['new_image']['tmp_name'], $targetFile);
+        } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
+            $image = $_POST['existing_image'];
+        } elseif ($keepCurrentImage) {
+            $image = $product['image'];
         }
 
-        $this->importHeader();
-        include "../project_php2_5/app/view/admin/products.php";
-        $this->importFooter();
+        $productModel = new SanPham();
+        $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
+
+        $encodedId = urlencode($id);
+        header("Location: /admin/edit_product?id=$encodedId");
+        exit;
     }
 
+    $this->importHeader();
+    include "../project_php2_5/app/view/admin/products.php";
+    $this->importFooter();
+}
 
 
     public function adminDeleteProduct()
@@ -337,19 +334,19 @@ class Controller
             echo "<script>window.location.href='/';</script>";
             exit;
         }
-
+    
         // Lấy ID của sản phẩm cần xóa từ tham số truyền vào
         $id = $_GET['id'];
-
+    
         // Thực hiện gọi phương thức xóa sản phẩm từ model
         $sanPhamModel = new SanPham();
         $sanPhamModel->adminDeleteProduct($id);
-
+    
         // Chuyển hướng về trang danh sách sản phẩm sau khi xóa thành công
         header("Location: /admin/products");
         exit;
     }
-
+    
 
     public function adminOrders()
     {
@@ -360,4 +357,5 @@ class Controller
         include "../project_php2_6/app/view/admin/orders.php";
         $this->importFooter();
     }
+
 }

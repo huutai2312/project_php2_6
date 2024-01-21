@@ -290,66 +290,43 @@ class Controller
         session_start();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy dữ liệu từ form
             $id = $_POST['product_id'];
             $name = $_POST['name'];
             $price = $_POST['price'];
             $quantity = $_POST['quantity'];
             $shortDesc = $_POST['short_desc'];
             $longDesc = $_POST['long_desc'];
-            $imageSource = $_POST['image_source'];
-            $keepCurrentImage = isset($_POST['keep_current_image']) && $_POST['keep_current_image'] == "1";
-
-            if ($imageSource === 'new' && !$keepCurrentImage) {
+        
+            // Kiểm tra lựa chọn của người dùng
+            if ($_POST['image_source'] === 'new') {
+                // Lựa chọn tải lên ảnh mới
                 $image = $_FILES['new_image']['name'];
+        
+                // Thực hiện tải lên hình ảnh mới
                 $targetDir = "public/uploads/";
                 $targetFile = $targetDir . basename($_FILES['new_image']['name']);
                 move_uploaded_file($_FILES['new_image']['tmp_name'], $targetFile);
-            } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
+            } else {
+                // Lựa chọn chọn ảnh có sẵn
                 $image = $_POST['existing_image'];
-            } elseif ($keepCurrentImage) {
-                $productModel = new SanPham();
-                $existingProduct = $productModel->getProductById($id);
-                $image = $existingProduct['image'];
             }
-
+        
+            // Thực hiện gọi phương thức từ model để cập nhật sản phẩm trong cơ sở dữ liệu
             $productModel = new SanPham();
             $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
-
+        
+            // Chuyển hướng về trang sửa sản phẩm sau khi cập nhật thành công
             $encodedId = urlencode($id);
             header("Location: /admin/edit_product?id=$encodedId");
             exit;
         }
+        
 
         $this->importHeader();
         include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
-
-
-
-    public function adminDeleteProduct()
-    {
-        session_start();
-        // Kiểm tra xác thực người dùng là quản trị viên
-        $user = $_SESSION['user'];
-        if ($user['is_admin'] != 1) {
-            echo "<script>alert('Bạn không có quyền truy cập!')</script>";
-            echo "<script>window.location.href='/';</script>";
-            exit;
-        }
-
-        // Lấy ID của sản phẩm cần xóa từ tham số truyền vào
-        $id = $_GET['id'];
-
-        // Thực hiện gọi phương thức xóa sản phẩm từ model
-        $sanPhamModel = new SanPham();
-        $sanPhamModel->adminDeleteProduct($id);
-
-        // Chuyển hướng về trang danh sách sản phẩm sau khi xóa thành công
-        header("Location: /admin/products");
-        exit;
-    }
-
 
     public function adminOrders()
     {
@@ -359,5 +336,63 @@ class Controller
         $orders = $orderModel->getAllOrders();
         include "../project_php2_6/app/view/admin/orders.php";
         $this->importFooter();
+    }
+
+    public function addToCart($product_id)
+    {
+        session_start();
+        // Lấy thông tin sản phẩm từ database
+        $sanPhamModel = new SanPham();
+        $productDetail = $sanPhamModel->getProductById($product_id);
+
+        if ($productDetail) {
+            // Kiểm tra nếu giỏ hàng không tồn tại, tạo mới giỏ hàng
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+            }
+
+            // Thêm sản phẩm vào giỏ hàng
+            $cartItem = [
+                'id' => $productDetail['id'],
+                'name' => $productDetail['name'],
+                'price' => $productDetail['price'],
+                'quantity' => 1, // Số lượng mặc định là 1
+                'image' => $productDetail['image'],
+                'total_price' => $productDetail['price']
+            ];
+
+            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+            $existingCartItem = array_filter($_SESSION['cart'], function ($item) use ($product_id) {
+                return $item['id'] == $product_id;
+            });
+
+            if (count($existingCartItem) > 0) {
+                // Sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng lên 1
+                $_SESSION['cart'][$product_id]['quantity']++;
+                $_SESSION['cart'][$product_id]['total_price'] += $productDetail['price'];
+            } else {
+                // Sản phẩm chưa tồn tại trong giỏ hàng, thêm mới
+                $_SESSION['cart'][$product_id] = $cartItem;
+
+                // Thêm thông tin sản phẩm vào cơ sở dữ liệu
+                $cartModel = new Cart();
+                $cartModel->addToCart(
+                    'id_billcart', // Giá trị của id_billcart tùy thuộc vào loại hóa đơn bạn sử dụng
+                    $_SESSION['user']['id'], // Thay đổi thành id_user tương ứng
+                    $product_id,
+                    $productDetail['name'],
+                    $productDetail['price'],
+                    1, // Số lượng mặc định là 1
+                    $productDetail['image'],
+                    $productDetail['price']
+                );
+            }
+
+            var_dump($product_id, $productDetail, $cartItem);
+            // Chuyển hướng về trang chi tiết sản phẩm
+            header('Location: /san-pham?id=' . $product_id);
+            exit;
+        } else {
+        }
     }
 }

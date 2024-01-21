@@ -96,15 +96,14 @@
                                         <button class="primary__btn" disable="disabled"><?php echo $product['image'] ?></button>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label" for="input7">Chọn Nguồn Ảnh</label>
-                                        <select class="contact__form--input" name="image_source" id="input7">
-                                            <option value="new">Tải Ảnh Mới</option>
-                                            <option value="existing">Chọn Ảnh Có Sẵn</option>
-                                            <option value="keep">Giữ Ảnh Hiện Tại</option>
+                                <fieldset>
+                                    <div class="col-12">
+                                        <div class="contact__form--list mb-20">
+                                            <label class="contact__form--label" for="input7">Choose Image Source</label>
+                                            <select class="contact__form--input" name="image_source" id="input7">
+                                            <option value="new">Upload New Image</option>
+                                            <option value="existing">Choose Existing Image</option>
                                         </select>
-                                        <input type="hidden" name="keep_current_image" id="keepCurrentImage" value="0">
                                     </div>
                                 </div>
                                 <div class="col-12" id="newImageSection">
@@ -137,44 +136,24 @@
                                             <!-- Hiển thị đường dẫn và hình ảnh đã chọn -->
                                             <p>Đường dẫn ảnh: <?= $uploadDir . $_POST['existing_image']; ?></p>
                                             <img src="<?= $uploadDir . $_POST['existing_image']; ?>" alt="Selected Image">
-                                        <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label" for="input5">Short Desc <span class="contact__form--label__star">*</span></label>
-                                        <textarea class="contact__form--textarea" name="short_desc" id="input5" placeholder="Short Desc"><?php echo $product['short_desc']; ?></textarea>
+                                    <div class="col-12">
+                                        <div class="contact__form--list mb-15">
+                                            <label class="contact__form--label" for="input5">Short Desc <span class="contact__form--label__star">*</span></label>
+                                            <textarea class="contact__form--textarea" name="short_desc" id="input5" placeholder="Short Desc"><?php echo $product['short_desc']; ?></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label" for="input6">Long Desc <span class="contact__form--label__star">*</span></label>
+                                </fieldset>
+                                    <div class="col-12">
+                                        <div class="contact__form--list mb-15">
+                                            <label class="contact__form--label" for="input6">Long Desc <span class="contact__form--label__star">*</span></label>
                                         <textarea class="contact__form--textarea" name="long_desc" id="input6" placeholder="Long Desc"><?php echo $product['long_desc']; ?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <button class="contact__form--btn primary__btn" type="submit" name="btn_submit_edit_product">Submit Now</button>
-                            <script>
-                                document.getElementById('input7').addEventListener('change', function() {
-                                    var newImageSection = document.getElementById('newImageSection');
-                                    var existingImageSection = document.getElementById('existingImageSection');
-                                    var keepCurrentImageInput = document.getElementById('keepCurrentImage');
-
-                                    if (this.value === 'new') {
-                                        newImageSection.style.display = 'block';
-                                        existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "0";
-                                    } else if (this.value === 'existing') {
-                                        newImageSection.style.display = 'none';
-                                        existingImageSection.style.display = 'block';
-                                        keepCurrentImageInput.value = "0";
-                                    } else if (this.value === 'keep') {
-                                        newImageSection.style.display = 'none';
-                                        existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "1";
-                                    }
-                                });
-                            </script>
                         </form>
                     </div>
                 </div>
@@ -183,3 +162,18 @@
     </section>
     <!-- my account section end -->
 </main>
+<script>
+    // Script để ẩn/hiện các phần tương ứng với lựa chọn
+    document.getElementById('input7').addEventListener('change', function() {
+        var newImageSection = document.getElementById('newImageSection');
+        var existingImageSection = document.getElementById('existingImageSection');
+
+        if (this.value === 'new') {
+            newImageSection.style.display = 'block';
+            existingImageSection.style.display = 'none';
+        } else if (this.value === 'existing') {
+            newImageSection.style.display = 'none';
+            existingImageSection.style.display = 'block';
+        }
+    });
+</script>

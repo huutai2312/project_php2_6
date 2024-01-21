@@ -71,7 +71,7 @@ class SanPham
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
     public function getProductByIdDesc($product_id)
     {
         $conn = $this->getConnection();
@@ -125,17 +125,25 @@ class SanPham
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->bindValue(':price', $price, PDO::PARAM_STR);
         $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-        $stmt->bindValue(':image', $image, PDO::PARAM_STR);
+
+        // Kiểm tra nếu $image là đường dẫn ảnh mới thì mới thêm vào truy vấn
+        if ($image !== $product['image']) {
+            $stmt->bindValue(':image', $image, PDO::PARAM_STR);
+        } else {
+            $stmt->bindValue(':image', $product['image'], PDO::PARAM_STR);
+        }
+
         $stmt->bindValue(':short_desc', $shortDesc, PDO::PARAM_STR);
         $stmt->bindValue(':long_desc', $longDesc, PDO::PARAM_STR);
 
         try {
             $stmt->execute();
         } catch (PDOException $e) {
-            // echo "Lỗi: " . $e->getMessage();
+            // Xử lý lỗi nếu cần thiết
             throw $e;
         }
     }
+
 
     public function adminDeleteProduct($id)
     {

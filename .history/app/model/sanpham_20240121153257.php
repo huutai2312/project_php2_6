@@ -71,7 +71,6 @@ class SanPham
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
     public function getProductByIdDesc($product_id)
     {
         $conn = $this->getConnection();

@@ -307,9 +307,7 @@ class Controller
             } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
                 $image = $_POST['existing_image'];
             } elseif ($keepCurrentImage) {
-                $productModel = new SanPham();
-                $existingProduct = $productModel->getProductById($id);
-                $image = $existingProduct['image'];
+                $image = $product['image'];
             }
 
             $productModel = new SanPham();
@@ -324,7 +322,6 @@ class Controller
         include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
-
 
 
     public function adminDeleteProduct()

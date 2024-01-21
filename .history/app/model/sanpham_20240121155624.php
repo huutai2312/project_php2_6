@@ -115,27 +115,35 @@ class SanPham
     }
 
     public function adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc)
-    {
-        $conn = $this->getConnection();
-        $query = "UPDATE ps_products 
+{
+    $conn = $this->getConnection();
+    $query = "UPDATE ps_products 
               SET name = :name, price = :price, quantity = :quantity, image = :image, short_desc = :short_desc, long_desc = :long_desc
               WHERE id = :id";
-        $stmt = $conn->prepare($query);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-        $stmt->bindValue(':price', $price, PDO::PARAM_STR);
-        $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-        $stmt->bindValue(':image', $image, PDO::PARAM_STR);
-        $stmt->bindValue(':short_desc', $shortDesc, PDO::PARAM_STR);
-        $stmt->bindValue(':long_desc', $longDesc, PDO::PARAM_STR);
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':price', $price, PDO::PARAM_STR);
+    $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
 
-        try {
-            $stmt->execute();
-        } catch (PDOException $e) {
-            // echo "Lỗi: " . $e->getMessage();
-            throw $e;
-        }
+    // Kiểm tra nếu $image là đường dẫn ảnh mới thì mới thêm vào truy vấn
+    if ($image !== $product['image']) {
+        $stmt->bindValue(':image', $image, PDO::PARAM_STR);
+    } else {
+        $stmt->bindValue(':image', $product['image'], PDO::PARAM_STR);
     }
+
+    $stmt->bindValue(':short_desc', $shortDesc, PDO::PARAM_STR);
+    $stmt->bindValue(':long_desc', $longDesc, PDO::PARAM_STR);
+
+    try {
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Xử lý lỗi nếu cần thiết
+        throw $e;
+    }
+}
+
 
     public function adminDeleteProduct($id)
     {

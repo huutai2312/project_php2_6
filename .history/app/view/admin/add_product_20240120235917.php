@@ -16,14 +16,6 @@
     <!-- Custom Style CSS -->
     <link rel="stylesheet" href="./../app/view/inc/assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Thư viện Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
-    <!-- Thư viện Bootstrap JS và jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -68,38 +60,40 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Name <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="name" placeholder="Name" type="text">
+                                        <label class="contact__form--label" >Name <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="name"  placeholder="Name" type="text">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Price <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="price" placeholder=" Price" type="text">
+                                        <label class="contact__form--label" >Price <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="price"  placeholder=" Price" type="text">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Quantity <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="quantity" placeholder="Quantity" type="text">
+                                        <label class="contact__form--label" >Quantity <span class="contact__form--label__star">*</span></label>
+                                        <input class="contact__form--input" name="quantity"  placeholder="Quantity" type="text">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label">Image <span class="contact__form--label__star">*</span></label>
-                                        <input class="contact__form--input" name="image" id="imageInput" placeholder="Image" type="file">
+    <div class="contact__form--list mb-20">
+        <label class="contact__form--label">Image <span class="contact__form--label__star">*</span></label>
+        <input class="contact__form--input" name="image" id="imageInput" placeholder="Image" type="file">
+        <button type="button" id="chooseImageBtn" class="btn btn-primary" data-toggle="modal" data-target="#imageModal">Chọn ảnh có sẵn</button>
+    </div>
+</div>
+
+                                <div class="col-12">
+                                    <div class="contact__form--list mb-15">
+                                        <label class="contact__form--label" >Short Desc <span class="contact__form--label__star">*</span></label>
+                                        <textarea class="contact__form--textarea" name="short_desc"  placeholder="Short Desc"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label">Short Desc <span class="contact__form--label__star">*</span></label>
-                                        <textarea class="contact__form--textarea" name="short_desc" placeholder="Short Desc"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="contact__form--list mb-15">
-                                        <label class="contact__form--label">Long Desc <span class="contact__form--label__star">*</span></label>
-                                        <textarea class="contact__form--textarea" name="long_desc" placeholder="Long Desc"></textarea>
+                                        <label class="contact__form--label" >Long Desc <span class="contact__form--label__star">*</span></label>
+                                        <textarea class="contact__form--textarea" name="long_desc"  placeholder="Long Desc"></textarea>
                                     </div>
                                 </div>
                             </div>

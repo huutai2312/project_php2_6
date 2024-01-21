@@ -88,6 +88,7 @@
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label">Image <span class="contact__form--label__star">*</span></label>
                                         <input class="contact__form--input" name="image" id="imageInput" placeholder="Image" type="file">
+                                        <button type="button" id="chooseImageBtn" class="btn btn-primary" data-toggle="modal" data-target="#imageModal">Chọn ảnh có sẵn</button>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -112,3 +113,42 @@
     </section>
     <!-- my account section end -->
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Chọn ảnh có sẵn</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Hiển thị danh sách các ảnh có sẵn -->
+                <?php
+                $imageDir = "public/uploads/";
+                $images = scandir($imageDir);
+                foreach ($images as $image) {
+                    if ($image != "." && $image != "..") {
+                        echo '<img src="' . $imageDir . $image . '" class="img-thumbnail choose-image" data-image="' . $image . '" />';
+                    }
+                }
+                ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // Xử lý khi chọn ảnh từ modal
+        $('.choose-image').click(function() {
+            var selectedImage = $(this).data('image');
+            $('#imageInput').val(selectedImage);
+            $('#imageModal').modal('hide');
+        });
+    });
+</script>

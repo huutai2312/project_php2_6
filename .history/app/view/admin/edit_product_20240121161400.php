@@ -97,16 +97,16 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label" for="input7">Chọn Nguồn Ảnh</label>
-                                        <select class="contact__form--input" name="image_source" id="input7">
-                                            <option value="new">Tải Ảnh Mới</option>
-                                            <option value="existing">Chọn Ảnh Có Sẵn</option>
-                                            <option value="keep">Giữ Ảnh Hiện Tại</option>
-                                        </select>
-                                        <input type="hidden" name="keep_current_image" id="keepCurrentImage" value="0">
-                                    </div>
-                                </div>
+        <div class="contact__form--list mb-20">
+            <label class="contact__form--label" for="input7">Chọn Nguồn Ảnh</label>
+            <select class="contact__form--input" name="image_source" id="input7">
+                <option value="new">Tải Ảnh Mới</option>
+                <option value="existing">Chọn Ảnh Có Sẵn</option>
+                <option value="keep">Giữ Ảnh Hiện Tại</option>
+            </select>
+            <input type="hidden" name="keep_current_image" id="keepCurrentImage" value="0">
+        </div>
+    </div>
                                 <div class="col-12" id="newImageSection">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input4">New Image <span class="contact__form--label__star">*</span></label>
@@ -155,23 +155,17 @@
                             </div>
                             <button class="contact__form--btn primary__btn" type="submit" name="btn_submit_edit_product">Submit Now</button>
                             <script>
+                                // Script để ẩn/hiện các phần tương ứng với lựa chọn
                                 document.getElementById('input7').addEventListener('change', function() {
                                     var newImageSection = document.getElementById('newImageSection');
                                     var existingImageSection = document.getElementById('existingImageSection');
-                                    var keepCurrentImageInput = document.getElementById('keepCurrentImage');
 
                                     if (this.value === 'new') {
                                         newImageSection.style.display = 'block';
                                         existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "0";
                                     } else if (this.value === 'existing') {
                                         newImageSection.style.display = 'none';
                                         existingImageSection.style.display = 'block';
-                                        keepCurrentImageInput.value = "0";
-                                    } else if (this.value === 'keep') {
-                                        newImageSection.style.display = 'none';
-                                        existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "1";
                                     }
                                 });
                             </script>

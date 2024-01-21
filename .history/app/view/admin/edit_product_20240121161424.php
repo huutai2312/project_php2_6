@@ -155,26 +155,26 @@
                             </div>
                             <button class="contact__form--btn primary__btn" type="submit" name="btn_submit_edit_product">Submit Now</button>
                             <script>
-                                document.getElementById('input7').addEventListener('change', function() {
-                                    var newImageSection = document.getElementById('newImageSection');
-                                    var existingImageSection = document.getElementById('existingImageSection');
-                                    var keepCurrentImageInput = document.getElementById('keepCurrentImage');
+        document.getElementById('input7').addEventListener('change', function() {
+            var newImageSection = document.getElementById('newImageSection');
+            var existingImageSection = document.getElementById('existingImageSection');
+            var keepCurrentImageInput = document.getElementById('keepCurrentImage');
 
-                                    if (this.value === 'new') {
-                                        newImageSection.style.display = 'block';
-                                        existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "0";
-                                    } else if (this.value === 'existing') {
-                                        newImageSection.style.display = 'none';
-                                        existingImageSection.style.display = 'block';
-                                        keepCurrentImageInput.value = "0";
-                                    } else if (this.value === 'keep') {
-                                        newImageSection.style.display = 'none';
-                                        existingImageSection.style.display = 'none';
-                                        keepCurrentImageInput.value = "1";
-                                    }
-                                });
-                            </script>
+            if (this.value === 'new') {
+                newImageSection.style.display = 'block';
+                existingImageSection.style.display = 'none';
+                keepCurrentImageInput.value = "0";
+            } else if (this.value === 'existing') {
+                newImageSection.style.display = 'none';
+                existingImageSection.style.display = 'block';
+                keepCurrentImageInput.value = "0";
+            } else if (this.value === 'keep') {
+                newImageSection.style.display = 'none';
+                existingImageSection.style.display = 'none';
+                keepCurrentImageInput.value = "1";
+            }
+        });
+    </script>
                         </form>
                     </div>
                 </div>

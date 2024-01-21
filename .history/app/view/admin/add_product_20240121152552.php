@@ -88,6 +88,7 @@
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label">Image <span class="contact__form--label__star">*</span></label>
                                         <input class="contact__form--input" name="image" id="imageInput" placeholder="Image" type="file">
+                                        <button type="button" id="chooseImageBtn" class="btn btn-primary" data-toggle="modal" data-target="#imageModal">Chọn ảnh có sẵn</button>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -112,3 +113,14 @@
     </section>
     <!-- my account section end -->
 </main>
+
+<script>
+    $(document).ready(function() {
+        // Xử lý khi chọn ảnh từ modal
+        $('.choose-image').click(function() {
+            var selectedImage = $(this).data('image');
+            $('#imageInput').val(selectedImage);
+            $('#imageModal').modal('hide');
+        });
+    });
+</script>
