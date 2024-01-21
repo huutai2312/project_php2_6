@@ -93,7 +93,7 @@
                                         }
                                         ?>
                                         <br>
-                                        <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank"><button class="primary__btn" type="button"><?php echo $product['image'] ?></button></a>
+                                        <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank"><button class="primary__btn" type><?php echo $product['image'] ?></button></a>
                                     </div>
                                 </div>
                                 <div class="col-12">

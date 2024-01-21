@@ -93,14 +93,14 @@
                                         }
                                         ?>
                                         <br>
-                                        <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank"><button class="primary__btn" type="button"><?php echo $product['image'] ?></button></a>
+                                        <button class="primary__btn" disable="disabled"><?php echo $product['image'] ?></button>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input7">Chọn Nguồn Ảnh</label>
                                         <select class="contact__form--input" name="image_source" id="input7">
-                                            <option value="keep" select>Giữ Ảnh Hiện Tại</option>
+                                            <option value="keep" sl>Giữ Ảnh Hiện Tại</option>
                                             <option value="new">Tải Ảnh Mới</option>
                                             <option value="existing">Chọn Ảnh Có Sẵn</option>
                                         </select>
@@ -174,14 +174,6 @@
                                         keepCurrentImageInput.value = "1";
                                     }
                                 });
-
-                                window.onload = function() {
-                                    if (isset("<?php echo $product['image']; ?>")) {
-                                        document.getElementById('input7').value = 'keep';
-                                    } else {
-                                        document.getElementById('input7').value = 'existing';
-                                    }
-                                };
                             </script>
                         </form>
                     </div>

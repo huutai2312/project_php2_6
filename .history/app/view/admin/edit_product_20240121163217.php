@@ -93,7 +93,7 @@
                                         }
                                         ?>
                                         <br>
-                                        <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank"><button class="primary__btn" type="button"><?php echo $product['image'] ?></button></a>
+                                        <button class="primary__btn" disable="disabled"><?php echo $product['image'] ?></button>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -176,10 +176,8 @@
                                 });
 
                                 window.onload = function() {
-                                    if (isset("<?php echo $product['image']; ?>")) {
+                                    if (isset("<?php echo $product['image']; ?>") {
                                         document.getElementById('input7').value = 'keep';
-                                    } else {
-                                        document.getElementById('input7').value = 'existing';
                                     }
                                 };
                             </script>
