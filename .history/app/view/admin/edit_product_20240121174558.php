@@ -87,29 +87,29 @@
                                         <?php
                                         $currentImage = "/public/uploads/" . $product['image']; // Lấy đường dẫn ảnh hiện tại từ dữ liệu sản phẩm
                                         if (!empty($currentImage)) {
-                                            echo '<img src="' . $currentImage . '" alt="' . htmlspecialchars($product['image']) . '">';
+                                            echo "<img src=\"$currentImage\" alt=\"<?php echo $product['image'] ?>\">";
                                         } else {
                                             echo "<p>No image available</p>";
                                         }
                                         ?>
-                                        <!-- <br> -->
+                                        <br>
+                                        <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank">
+                                            <button class="primary__btn" type="button"><?php echo $product['image'] ?></button>
+                                        </a>
                                     </div>
-                                    <a href="/public/uploads/<?php echo $product['image'] ?>" target="_blank">
-                                        <button class="primary__btn" type="button"><?php echo $product['image'] ?></button>
-                                    </a>
                                 </div>
                                 <div class="col-12">
                                     <div class="contact__form--list mb-20">
-                                        <label class="contact__form--label" for="input7">Source Image</label>
+                                        <label class="contact__form--label" for="input7">Chọn Nguồn Ảnh</label>
                                         <select class="contact__form--input" name="image_source" id="input7">
-                                            <option value="keep" select>Keep current image</option>
-                                            <option value="new">Upload new image</option>
-                                            <option value="existing">Image Existing</option>
+                                            <option value="keep" select>Giữ Ảnh Hiện Tại</option>
+                                            <option value="new">Tải Ảnh Mới</option>
+                                            <option value="existing">Chọn Ảnh Có Sẵn</option>
                                         </select>
                                         <input type="hidden" name="keep_current_image" id="keepCurrentImage" value="1">
                                     </div>
                                 </div>
-                                <div class="col-12" id="newImageSection" style="display: none;">
+                                <div class="col-12" id="newImageSection">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input4">New Image <span class="contact__form--label__star">*</span></label>
                                         <input class="contact__form--input" name="new_image" id="input4" placeholder="New Image" type="file">

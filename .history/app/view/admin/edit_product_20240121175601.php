@@ -104,12 +104,12 @@
                                         <select class="contact__form--input" name="image_source" id="input7">
                                             <option value="keep" select>Keep current image</option>
                                             <option value="new">Upload new image</option>
-                                            <option value="existing">Image Existing</option>
+                                            <option value="existing">Chọn Ảnh Có Sẵn</option>
                                         </select>
                                         <input type="hidden" name="keep_current_image" id="keepCurrentImage" value="1">
                                     </div>
                                 </div>
-                                <div class="col-12" id="newImageSection" style="display: none;">
+                                <div class="col-12" id="newImageSection">
                                     <div class="contact__form--list mb-20">
                                         <label class="contact__form--label" for="input4">New Image <span class="contact__form--label__star">*</span></label>
                                         <input class="contact__form--input" name="new_image" id="input4" placeholder="New Image" type="file">
