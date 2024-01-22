@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 21, 2024 lúc 03:01 PM
+-- Thời gian đã tạo: Th1 22, 2024 lúc 03:26 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -43,7 +43,8 @@ CREATE TABLE `ps_order_detail` (
 -- Chỉ mục cho bảng `ps_order_detail`
 --
 ALTER TABLE `ps_order_detail`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -54,6 +55,16 @@ ALTER TABLE `ps_order_detail`
 --
 ALTER TABLE `ps_order_detail`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `ps_order_detail`
+--
+ALTER TABLE `ps_order_detail`
+  ADD CONSTRAINT `ps_order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `ps_order` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
