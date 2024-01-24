@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 22, 2024 lúc 03:26 AM
+-- Thời gian đã tạo: Th1 24, 2024 lúc 04:17 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -49,12 +49,8 @@ CREATE TABLE `ps_order` (
 --
 
 INSERT INTO `ps_order` (`id`, `email`, `first_name`, `last_name`, `company`, `address`, `phone`, `city`, `country`, `postal_code`, `total_price`, `payment`, `status`, `time`) VALUES
-(31, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:33:33'),
-(32, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:35:32'),
-(33, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:35:39'),
-(34, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:36:06'),
-(35, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:36:19'),
-(36, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:54:27');
+(38, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:53:23'),
+(39, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:56:06');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -74,7 +70,7 @@ ALTER TABLE `ps_order`
 -- AUTO_INCREMENT cho bảng `ps_order`
 --
 ALTER TABLE `ps_order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

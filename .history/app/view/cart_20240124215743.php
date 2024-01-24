@@ -67,9 +67,9 @@
                                     </tbody>
                                 </table>
                                 <div class="continue__shopping d-flex justify-content-between">
-                                    <a href="/clear-cart" class="cart__summary--footer__btn primary__btn">Clear Cart</a>
-                                    <button type="submit" class="cart__summary--footer__btn primary__btn" name="updateCart">Cập nhật giỏ hàng</button>
+                                    <button type="submit" class="cart__update--btn" name="updateCart">Cập nhật giỏ hàng</button>
                                 </div>
+                                <a href="/clear-cart" class="cart__clear-btn">Clear Cart</a>
 
                             </div>
                         </div>

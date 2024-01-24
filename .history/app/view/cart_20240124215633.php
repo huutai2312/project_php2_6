@@ -9,7 +9,7 @@
     <section class="cart__section section--padding">
         <div class="container-fluid">
             <div class="cart__section--inner">
-            <a class="continue__shopping--link" href="/cua-hang"><< Continue shopping</a>
+            <a class="continue__shopping--link" href="/cua-hang">Continue shopping</a>
                 <form action="#">
                     <h2 class="cart__title mb-40">Shopping Cart</h2>
                     <div class="row">
@@ -67,9 +67,10 @@
                                     </tbody>
                                 </table>
                                 <div class="continue__shopping d-flex justify-content-between">
-                                    <a href="/clear-cart" class="cart__summary--footer__btn primary__btn">Clear Cart</a>
-                                    <button type="submit" class="cart__summary--footer__btn primary__btn" name="updateCart">Cập nhật giỏ hàng</button>
+                                    <button type="submit" class="cart__update--btn" name="updateCart">Cập nhật giỏ hàng</button>
+                                    <a class="continue__shopping--link" href="/cua-hang">Continue shopping</a>
                                 </div>
+                                <a href="/clear-cart" class="cart__clear-btn">Clear Cart</a>
 
                             </div>
                         </div>

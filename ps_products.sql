@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 22, 2024 lúc 03:27 AM
+-- Thời gian đã tạo: Th1 24, 2024 lúc 04:17 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -48,8 +48,8 @@ INSERT INTO `ps_products` (`id`, `name`, `price`, `short_desc`, `long_desc`, `qu
 (2, 'Template HTML HBB', '25000000', 'Template HTML HBB dfbf', 'Dell XPS 13 là chiếc laptop chuyên đồ họa và công việc nặng, với thiết kế siêu mỏng và màn hình InfinityEdge.', 30000000, 0, '812.jpg', '2024-01-05'),
 (6, 'Template HTML, CSS YTUUU', '76000000', 'Template HTML HBB dfbf4455', 'Dell XPS 13 là chiếc laptop chuyên đồ họa và công việc nặng, với thiết kế siêu mỏng và màn hình InfinityEdge.', 67000000, 0, 'img19_1920x1200.png', '2024-01-05'),
 (7, 'jkvjm', '5678', 'hbjbhb', '78vuyhkjhjkmv', 767587, NULL, 'imager_4_79676_700.jpg', '2024-01-19'),
-(8, 'abc123', '2312', 'rtebvdfdvfẻhfbg', '3t35rde54gse45fvfbg', 345234, NULL, '108y_chkmeqbkc5m20rb1e9lmat39dpjg-removebg-preview.png', '2024-01-19'),
-(10, 'ddeoooommm', '32454', 'bevrfy6hj dsvvdsddcbb', 'ưeg354g34bb5gbsdvsdvcakjvbakjbvrvsdvsddsccdsac', 200, NULL, '416134988_1331954691537232_1547475080054229849_n.jpg', '2024-01-21');
+(8, 'abc123', '2312', 'rtebvdfdvfẻhfbg hbestthth', '3t35rde54gse45fvfbg', 345234, NULL, '15_hinh-gif-anime-chill-gif-chill-dep-nhat.gif', '2024-01-19'),
+(10, 'ddeoooommm', '3245455', 'bevrfy6hj dsvvdsddcbb', 'ưeg354g34bb5gbsdvs\r\njjjdvcakjvbakjbvrvsdvsddsccdsac', 2000, NULL, 'image5.png', '2024-01-21');
 
 --
 -- Chỉ mục cho các bảng đã đổ

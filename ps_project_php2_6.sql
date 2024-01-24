@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 22, 2024 lúc 03:27 AM
+-- Thời gian đã tạo: Th1 24, 2024 lúc 04:18 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -68,12 +68,8 @@ CREATE TABLE `ps_order` (
 --
 
 INSERT INTO `ps_order` (`id`, `email`, `first_name`, `last_name`, `company`, `address`, `phone`, `city`, `country`, `postal_code`, `total_price`, `payment`, `status`, `time`) VALUES
-(31, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:33:33'),
-(32, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:35:32'),
-(33, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:35:39'),
-(34, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:36:06'),
-(35, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:36:19'),
-(36, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 02:54:27');
+(38, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:53:23'),
+(39, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:56:06');
 
 -- --------------------------------------------------------
 
@@ -116,8 +112,8 @@ INSERT INTO `ps_products` (`id`, `name`, `price`, `short_desc`, `long_desc`, `qu
 (2, 'Template HTML HBB', '25000000', 'Template HTML HBB dfbf', 'Dell XPS 13 là chiếc laptop chuyên đồ họa và công việc nặng, với thiết kế siêu mỏng và màn hình InfinityEdge.', 30000000, 0, '812.jpg', '2024-01-05'),
 (6, 'Template HTML, CSS YTUUU', '76000000', 'Template HTML HBB dfbf4455', 'Dell XPS 13 là chiếc laptop chuyên đồ họa và công việc nặng, với thiết kế siêu mỏng và màn hình InfinityEdge.', 67000000, 0, 'img19_1920x1200.png', '2024-01-05'),
 (7, 'jkvjm', '5678', 'hbjbhb', '78vuyhkjhjkmv', 767587, NULL, 'imager_4_79676_700.jpg', '2024-01-19'),
-(8, 'abc123', '2312', 'rtebvdfdvfẻhfbg', '3t35rde54gse45fvfbg', 345234, NULL, '108y_chkmeqbkc5m20rb1e9lmat39dpjg-removebg-preview.png', '2024-01-19'),
-(10, 'ddeoooommm', '32454', 'bevrfy6hj dsvvdsddcbb', 'ưeg354g34bb5gbsdvsdvcakjvbakjbvrvsdvsddsccdsac', 200, NULL, '416134988_1331954691537232_1547475080054229849_n.jpg', '2024-01-21');
+(8, 'abc123', '2312', 'rtebvdfdvfẻhfbg hbestthth', '3t35rde54gse45fvfbg', 345234, NULL, '15_hinh-gif-anime-chill-gif-chill-dep-nhat.gif', '2024-01-19'),
+(10, 'ddeoooommm', '3245455', 'bevrfy6hj dsvvdsddcbb', 'ưeg354g34bb5gbsdvs\r\njjjdvcakjvbakjbvrvsdvsddsccdsac', 2000, NULL, 'image5.png', '2024-01-21');
 
 -- --------------------------------------------------------
 
@@ -130,13 +126,13 @@ CREATE TABLE `ps_user` (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `age` int DEFAULT NULL,
+  `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` int DEFAULT NULL,
+  `phone` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `postal_code` int DEFAULT NULL,
@@ -149,16 +145,15 @@ CREATE TABLE `ps_user` (
 --
 
 INSERT INTO `ps_user` (`id`, `name`, `first_name`, `last_name`, `age`, `company`, `email`, `password`, `address`, `address2`, `phone`, `city`, `country`, `postal_code`, `is_admin`, `date_created`) VALUES
-(1, 'nht', 'aaa', 'bb', 20, 'XDNT PHAT DAT', 'a@gmail.com', '$2y$10$QLeajlno6I16CRoVRRuNN.6Hd2GDKyP7rFfisO8HbmMtb4mIz13Ee', 'asdavasdv', 'arebdfba', 987654321, 'hcm', '', 70000, 1, ''),
-(2, 'abc', '', '', 0, '', 'b@gmail.com', '$2y$10$y2FXN5PUfE6SU36isSSKBOjKIgL5fgxhxWaD5ZO5XUc1eCnjONzAO', '', '', 0, '', '', 0, 0, ''),
-(3, 'ndc', '', '', 0, '', 'c@gmail.com', '$2y$10$VYkSoYnjSGFvDNom3WtB/.zqeyzG1rs.fN0hmaKH4kM6cD4vmpab.', '', '', 0, '', '', 0, 0, ''),
-(4, 'sd', '', '', 0, '', 'd@gmail.com', '$2y$10$lEsWOAH4DR/gHXLs1jpHVOEFlYPGf/qt9MFrUBjMVU8RU1sMZaFgC', '', '', 0, '', '', 0, 0, ''),
-(5, 'ddd', '', '', 0, '', 'd@gmail.com', '$2y$10$9elR1WupfJAiS3Bi/oBGvurIB.w0W1Z2TrSk4ULiPY4U954/J3ToG', '', '', 0, '', '', 0, 0, ''),
-(6, 'dddd', '', '', 0, '', 'hhh@gmail.com', '$2y$10$EdFPXn0Rlaw85CJbpUajoujWvtpGSTIx3lVr1mBDD9bzltfXIkewa', '', '', 0, '', '', 0, 0, ''),
-(7, 'j', '', '', 0, '', 'j@gmail.com', '$2y$10$cpbU5UMrt/tllOijVB5w0O3opbhsR5bv8RfrR8mNIAq4r2tlFZmRG', '', '', 0, '', '', 0, 0, ''),
-(8, ',sjfbv', '', '', 0, '', 'n@gmail.com', '$2y$10$/IxiUJ8dpucotVDcXuvi6uZCkcbg29tOnms5youmHSl099V5XxBNG', '', '', 0, '', '', 0, 0, ''),
-(9, 'fgng', NULL, NULL, NULL, NULL, '12@gmail.com', '$2y$10$Pe/SJFLJtjzxRsWCuhBuiO7BoSAuFs7PwT904s2cKKKVXJZdHbOTm', '', NULL, 0, NULL, NULL, NULL, 0, ''),
-(10, 'avsv', NULL, NULL, NULL, NULL, 'e@gmail.com', '$2y$10$o4dggpaBXkzysvg9RnvhFu3MOuI/NTFg.TpYxFGMxQKrsccuVvvA6', '', NULL, 0, NULL, NULL, NULL, 0, '22-01-2024 03:23:28');
+(1, 'nht', 'aaa', 'bb', '20', 'XDNT PHAT DAT', 'a@gmail.com', '$2y$10$QLeajlno6I16CRoVRRuNN.6Hd2GDKyP7rFfisO8HbmMtb4mIz13Ee', 'asdavasdv', 'arebdfba', '987654321', 'hcm', '', 70000, 1, ''),
+(2, 'abc', '', '', '0', '', 'b@gmail.com', '$2y$10$y2FXN5PUfE6SU36isSSKBOjKIgL5fgxhxWaD5ZO5XUc1eCnjONzAO', '', '', '0', '', '', 0, 0, ''),
+(3, 'ndc', '', '', '0', '', 'c@gmail.com', '$2y$10$VYkSoYnjSGFvDNom3WtB/.zqeyzG1rs.fN0hmaKH4kM6cD4vmpab.', '', '', '0', '', '', 0, 0, ''),
+(5, 'ddd', '', '', '0', '', 'd@gmail.com', '$2y$10$9elR1WupfJAiS3Bi/oBGvurIB.w0W1Z2TrSk4ULiPY4U954/J3ToG', '', '', '0', '', '', 0, 0, ''),
+(6, 'dddd', '', '', '0', '', 'hhh@gmail.com', '$2y$10$EdFPXn0Rlaw85CJbpUajoujWvtpGSTIx3lVr1mBDD9bzltfXIkewa', '', '', '0', '', '', 0, 0, ''),
+(7, 'j', '', '', '0', '', 'j@gmail.com', '$2y$10$cpbU5UMrt/tllOijVB5w0O3opbhsR5bv8RfrR8mNIAq4r2tlFZmRG', '', '', '0', '', '', 0, 0, ''),
+(8, ',sjfbv', '', '0', '5565', '', 'n@gmail.com', NULL, '', '', '0', '', '', 0, 0, ''),
+(9, 'fgng', NULL, NULL, NULL, NULL, '12@gmail.com', '$2y$10$Pe/SJFLJtjzxRsWCuhBuiO7BoSAuFs7PwT904s2cKKKVXJZdHbOTm', '', NULL, '0', NULL, NULL, NULL, 0, ''),
+(11, 'ggg', NULL, NULL, NULL, NULL, 'g@gmail.com', '$2y$10$M.1crdnlLKLXyoM33jIa3Olz0HSsdZi9G9bxW..7jZM2nK.dNMm.u', '', NULL, '0', NULL, NULL, NULL, 0, '22-01-2024 06:56:54');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -209,7 +204,7 @@ ALTER TABLE `ps_cart`
 -- AUTO_INCREMENT cho bảng `ps_order`
 --
 ALTER TABLE `ps_order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT cho bảng `ps_order_detail`
@@ -227,7 +222,7 @@ ALTER TABLE `ps_products`
 -- AUTO_INCREMENT cho bảng `ps_user`
 --
 ALTER TABLE `ps_user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
