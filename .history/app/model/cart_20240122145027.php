@@ -1,0 +1,28 @@
+<?php
+
+namespace App\model;
+
+use PDO;
+use PDOException;
+
+class Cart
+{
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new database();
+    }
+
+    private function getConnection()
+    {
+        return $this->db->connection_database();
+    }
+    
+    public function checkCart($id){
+        for ($i=0; $i < sizeof($_SESSION['car']); $i++) { 
+            # code...
+        }
+    }
+
+}
