@@ -4,11 +4,6 @@ namespace App\model;
 
 use PDO;
 use PDOException;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
-
-$mail = new PHPMailer(true);
 
 class Checkout
 {
@@ -61,38 +56,10 @@ class Checkout
             // Đóng kết nối
             $conn = null;
 
-            // Send notification email
-            // Send notification email
-            $emailSubject = 'Order Confirmation';
-            $emailContent = "Thank you for your order!\n\n";
-            $emailContent .= "Order ID: " . $order_id . "\n";
-            // Include other relevant order details in the email content
-
-            $mailer = new PHPMailer();
-            // Configure the mailer with your SMTP settings
-            $mailer->isSMTP();
-            $mailer->Host = 'smtp.gmail.com';
-            $mailer->Port = 587;
-            $mailer->SMTPAuth = true;
-            $mailer->Username = 'huutai90909@gmail.com';
-            $mailer->Password = 'azbk ohrl bjxy ktrx';
-
-            $mailer->setFrom('huutai90909@gmail.com', 'Suruchi');
-            $mailer->addAddress($email, $first_name . ' ' . $last_name);
-            $mailer->Subject = $emailSubject;
-            $mailer->Body = $emailContent;
-
-            if ($mailer->send()) {
-                // Email sent successfully
-                header("Location: /tai-khoan");
-                exit;
-            } else {
-                // Failed to send email
-                echo 'Failed to send email.';
-            }
-
             header("Location: /tai-khoan");
             exit;
+            
+            
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

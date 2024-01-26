@@ -337,8 +337,8 @@
             var cartRows = cartTableBody.querySelectorAll('.cart__table--body__items');
             cartRows.forEach(function (row) {
                 var quantity = parseInt(row.querySelector('.quantity_number').value);
-                var price = parseFloat(row.querySelector('.cart__price').textContent.replace('$', '').replace(',', '').replace(',', ''));
-                var rowTotal = price;
+                var price = parseFloat(row.querySelector('.cart__price').textContent.replace('$', '').replace(',', ''));
+                var rowTotal = quantity * price;
                 subtotal += rowTotal;
             });
 

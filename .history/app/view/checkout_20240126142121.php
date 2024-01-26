@@ -231,9 +231,13 @@
                                                 <tr class=" summary__table--items">
                                                     <td class=" summary__table--list">
                                                         <div class="product__image two  d-flex align-items-center">
+                                                            <div class="product__thumbnail border-radius-5">
+                                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product7.png" alt="cart-product"></a>
+                                                                <span class="product__thumbnail--quantity">1</span>
+                                                            </div>
                                                             <div class="product__description">
                                                                 <h3 class="product__description--name h4"><a href="product-details.html"><?php echo $cartItem[2]; ?></a></h3>
-                                                                <span class="product__description--variant" style="color: black">Quantity: <?php echo (int)$cartItem[1]; ?></span>
+                                                                <span class="product__description--variantstyle="color: black">Quantity: <?php echo (int)$cartItem[1]; ?></span>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -285,7 +289,6 @@
                                                 <div class="product__description">
                                                     <h3 class="product__description--name h4"><a href="#"><?php echo $cartItem[2]; ?></a></h3>
                                                     <span class="product__description--variant" style="color: black">Quantity: <?php echo (int)$cartItem[1]; ?></span>
-                                                    <input class="quantity_number" type="hidden" value="<?php echo (int)$cartItem[1]; ?>">
                                                 </div>
                                             </div>
                                         </td>
@@ -324,36 +327,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        function updateSubtotalAndTotal() {
-            var subtotalElement = document.getElementById('subtotal1');
-            var totalElement = document.getElementById('totalCheckout1');
-            var cartTableBody = document.querySelector('.cart__table--inner');
-
-            var subtotal = 0;
-
-            var cartRows = cartTableBody.querySelectorAll('.cart__table--body__items');
-            cartRows.forEach(function (row) {
-                var quantity = parseInt(row.querySelector('.quantity_number').value);
-                var price = parseFloat(row.querySelector('.cart__price').textContent.replace('$', '').replace(',', '').replace(',', ''));
-                var rowTotal = price;
-                subtotal += rowTotal;
-            });
-
-            subtotalElement.textContent = '$' + subtotal.toLocaleString();
-
-            // Tính total bằng cách thêm 5% vào subtotal
-            var total = subtotal * 1.05;
-            totalElement.textContent = '$' + total.toLocaleString();
-        }
-
-        var quantityInputs = document.querySelectorAll('.quantity_number');
-        quantityInputs.forEach(function (input) {
-            input.addEventListener('input', updateSubtotalAndTotal);
-        });
-
-        updateSubtotalAndTotal();
-    });
-</script>

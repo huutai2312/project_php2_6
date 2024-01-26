@@ -77,7 +77,7 @@ class Checkout
             $mailer->Username = 'huutai90909@gmail.com';
             $mailer->Password = 'azbk ohrl bjxy ktrx';
 
-            $mailer->setFrom('huutai90909@gmail.com', 'Suruchi');
+            $mailer->setFrom('huutai90909@gmail.com', 'Your Name');
             $mailer->addAddress($email, $first_name . ' ' . $last_name);
             $mailer->Subject = $emailSubject;
             $mailer->Body = $emailContent;

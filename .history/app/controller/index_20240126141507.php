@@ -265,6 +265,7 @@ class Controller
         $cartItems = $_SESSION['cart'] ?? [];
         include "../project_php2_6/app/view/checkout.php";
         $this->importFooter();
+
     }
 
     public function userOrder()

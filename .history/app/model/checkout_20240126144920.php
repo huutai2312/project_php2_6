@@ -63,33 +63,33 @@ class Checkout
 
             // Send notification email
             // Send notification email
-            $emailSubject = 'Order Confirmation';
-            $emailContent = "Thank you for your order!\n\n";
-            $emailContent .= "Order ID: " . $order_id . "\n";
-            // Include other relevant order details in the email content
+        $emailSubject = 'Order Confirmation';
+        $emailContent = "Thank you for your order!\n\n";
+        $emailContent .= "Order ID: " . $order_id . "\n";
+        // Include other relevant order details in the email content
 
-            $mailer = new PHPMailer();
-            // Configure the mailer with your SMTP settings
-            $mailer->isSMTP();
-            $mailer->Host = 'smtp.gmail.com';
-            $mailer->Port = 587;
-            $mailer->SMTPAuth = true;
-            $mailer->Username = 'huutai90909@gmail.com';
-            $mailer->Password = 'azbk ohrl bjxy ktrx';
+        $mailer = new PHPMailer();
+        // Configure the mailer with your SMTP settings
+        $mailer->isSMTP();
+        $mailer->Host = 'your-smtp-host';
+        $mailer->Port = 587;
+        $mailer->SMTPAuth = true;
+        $mailer->Username = 'your-smtp-username';
+        $mailer->Password = 'your-smtp-password';
 
-            $mailer->setFrom('huutai90909@gmail.com', 'Suruchi');
-            $mailer->addAddress($email, $first_name . ' ' . $last_name);
-            $mailer->Subject = $emailSubject;
-            $mailer->Body = $emailContent;
+        $mailer->setFrom('your-email@example.com', 'Your Name');
+        $mailer->addAddress($email, $first_name . ' ' . $last_name);
+        $mailer->Subject = $emailSubject;
+        $mailer->Body = $emailContent;
 
-            if ($mailer->send()) {
-                // Email sent successfully
-                header("Location: /tai-khoan");
-                exit;
-            } else {
-                // Failed to send email
-                echo 'Failed to send email.';
-            }
+        if ($mailer->send()) {
+            // Email sent successfully
+            header("Location: /tai-khoan");
+            exit;
+        } else {
+            // Failed to send email
+            echo 'Failed to send email.';
+        }
 
             header("Location: /tai-khoan");
             exit;

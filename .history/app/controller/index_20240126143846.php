@@ -265,6 +265,12 @@ class Controller
         $cartItems = $_SESSION['cart'] ?? [];
         include "../project_php2_6/app/view/checkout.php";
         $this->importFooter();
+        
+        $this->importHeader();
+        $cartItems = $_SESSION['cart'] ?? [];
+        // var_dump($cartItems);
+        include "../project_php2_6/app/view/cart.php";
+        $this->importFooter();
     }
 
     public function userOrder()

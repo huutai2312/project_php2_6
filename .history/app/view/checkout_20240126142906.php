@@ -327,33 +327,28 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        function updateSubtotalAndTotal() {
+        function updateSubtotal() {
             var subtotalElement = document.getElementById('subtotal1');
-            var totalElement = document.getElementById('totalCheckout1');
             var cartTableBody = document.querySelector('.cart__table--inner');
 
-            var subtotal = 0;
+            var total = 0;
 
             var cartRows = cartTableBody.querySelectorAll('.cart__table--body__items');
             cartRows.forEach(function (row) {
                 var quantity = parseInt(row.querySelector('.quantity_number').value);
                 var price = parseFloat(row.querySelector('.cart__price').textContent.replace('$', '').replace(',', '').replace(',', ''));
-                var rowTotal = price;
-                subtotal += rowTotal;
+                var rowTotal = quantity * price;
+                total += rowTotal;
             });
 
-            subtotalElement.textContent = '$' + subtotal.toLocaleString();
-
-            // Tính total bằng cách thêm 5% vào subtotal
-            var total = subtotal * 1.05;
-            totalElement.textContent = '$' + total.toLocaleString();
+            subtotalElement.textContent = '$' + total.toLocaleString();
         }
 
         var quantityInputs = document.querySelectorAll('.quantity_number');
         quantityInputs.forEach(function (input) {
-            input.addEventListener('input', updateSubtotalAndTotal);
+            input.addEventListener('input', updateSubtotal);
         });
 
-        updateSubtotalAndTotal();
+        updateSubtotal();
     });
 </script>

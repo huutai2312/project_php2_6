@@ -39,7 +39,7 @@
                                         <div class="checkout__input--list ">
                                             <label>
                                                 <?php
-                                                if (isset($_SESSION['user'])) {
+                                                if (isset($_SESSION['user'])) { 
                                                     $user = $_SESSION['user'];
                                                     if (isset($user['first_name'])) {
                                                         echo "<input class='checkout__input--field border-radius-5' value=" . $user['first_name'] . " type='text' name='first_name'>";
@@ -225,27 +225,24 @@
                         <div class="order__summary--section">
                             <div class="cart__table checkout__product--table">
                                 <table class="summary__table">
-                                    <?php if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) : ?>
-                                        <?php foreach ($_SESSION['cart'] as $cartItem) : ?>
-                                            <tbody class="summary__table--body">
-                                                <tr class=" summary__table--items">
-                                                    <td class=" summary__table--list">
-                                                        <div class="product__image two  d-flex align-items-center">
-                                                            <div class="product__description">
-                                                                <h3 class="product__description--name h4"><a href="product-details.html"><?php echo $cartItem[2]; ?></a></h3>
-                                                                <span class="product__description--variant" style="color: black">Quantity: <?php echo (int)$cartItem[1]; ?></span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class=" summary__table--list">
-                                                        <span class="cart__price"><?php echo '$' . number_format((float)$cartItem[1] * (float)$cartItem[3], 0); ?></span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        <?php endforeach; ?>
-                                    <?php else : ?>
-                                        <div class="cart__empty-message">Your cart is empty.</div>
-                                    <?php endif; ?>
+                                    <tbody class="summary__table--body">
+                                        <!-- <tr class=" summary__table--items">
+                                            <td class=" summary__table--list">
+                                                <div class="product__image two  d-flex align-items-center">
+                                                    <div class="product__thumbnail border-radius-5">
+                                                        <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product7.png" alt="cart-product"></a>
+                                                        <span class="product__thumbnail--quantity">1</span>
+                                                    </div>
+                                                    <div class="product__description">
+                                                        <h3 class="product__description--name h4"><a href="product-details.html">Fresh-whole-fish</a></h3>
+                                                        <span class="product__description--variant">COLOR: Blue</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class=" summary__table--list">
+                                                <span class="cart__price">£65.00</span>
+                                            </td>
+                                        </tr> -->
                                 </table>
                             </div>
 
@@ -276,28 +273,25 @@
             <aside class="checkout__sidebar sidebar">
                 <div class="cart__table checkout__product--table">
                     <table class="cart__table--inner">
-                        <?php if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) : ?>
-                            <?php foreach ($_SESSION['cart'] as $cartItem) : ?>
-                                <tbody class="cart__table--body">
-                                    <tr class="cart__table--body__items">
-                                        <td class="cart__table--body__list">
-                                            <div class="product__image two  d-flex align-items-center">
-                                                <div class="product__description">
-                                                    <h3 class="product__description--name h4"><a href="#"><?php echo $cartItem[2]; ?></a></h3>
-                                                    <span class="product__description--variant" style="color: black">Quantity: <?php echo (int)$cartItem[1]; ?></span>
-                                                    <input class="quantity_number" type="hidden" value="<?php echo (int)$cartItem[1]; ?>">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="cart__table--body__list">
-                                            <span class="cart__price"><?php echo '$' . number_format((float)$cartItem[1] * (float)$cartItem[3], 0); ?></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <div class="cart__empty-message">Your cart is empty.</div>
-                        <?php endif; ?>
+                        <tbody class="cart__table--body">
+                            <!-- <tr class="cart__table--body__items">
+                                <td class="cart__table--body__list">
+                                    <div class="product__image two  d-flex align-items-center">
+                                        <div class="product__thumbnail border-radius-5">
+                                            <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product7.png" alt="cart-product"></a>
+                                            <span class="product__thumbnail--quantity">1</span>
+                                        </div>
+                                        <div class="product__description">
+                                            <h3 class="product__description--name h4"><a href="product-details.html">Fresh-whole-fish</a></h3>
+                                            <span class="product__description--variant">COLOR: Blue</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__table--body__list">
+                                    <span class="cart__price">£65.00</span>
+                                </td>
+                            </tr> -->
+                        </tbody>
                     </table>
                 </div>
                 <div class="checkout__total">
@@ -326,34 +320,74 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        function updateSubtotalAndTotal() {
-            var subtotalElement = document.getElementById('subtotal1');
-            var totalElement = document.getElementById('totalCheckout1');
-            var cartTableBody = document.querySelector('.cart__table--inner');
+    $(document).ready(function() {
+        // Lấy danh sách sản phẩm từ LocalStorage
+        var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-            var subtotal = 0;
+        function updateSubtotal() {
+            var subtotal = cartItems.reduce(function(sum, item) {
+                return sum + item.price * item.quantity;
+            }, 0);
 
-            var cartRows = cartTableBody.querySelectorAll('.cart__table--body__items');
-            cartRows.forEach(function (row) {
-                var quantity = parseInt(row.querySelector('.quantity_number').value);
-                var price = parseFloat(row.querySelector('.cart__price').textContent.replace('$', '').replace(',', '').replace(',', ''));
-                var rowTotal = price;
-                subtotal += rowTotal;
-            });
+            // Tính phí vận chuyển
+            var shippingFee = subtotal * 0.05;
 
-            subtotalElement.textContent = '$' + subtotal.toLocaleString();
+            // Hiển thị tổng giá trị với định dạng số và ký hiệu tiền tệ
+            $('#subtotal1').text(`$${subtotal.toLocaleString()}`);
+            $('#subtotal2').text(`$${subtotal.toLocaleString()}`);
 
-            // Tính total bằng cách thêm 5% vào subtotal
-            var total = subtotal * 1.05;
-            totalElement.textContent = '$' + total.toLocaleString();
+            // Tính tổng bill và hiển thị
+            var totalBill1 = subtotal + shippingFee;
+            var totalBill2 = subtotal + shippingFee;
+            var tottalBill = totalBill1;
+            $('#totalCheckout1').text(`$${totalBill1.toLocaleString()}`);
+            $('#totalCheckout2').text(`$${totalBill2.toLocaleString()}`);
+
+            localStorage.setItem('cartSubTotal', subtotal);
+            localStorage.setItem('cartFee', shippingFee);
+            localStorage.setItem('cartTotal', totalBill);
         }
 
-        var quantityInputs = document.querySelectorAll('.quantity_number');
-        quantityInputs.forEach(function (input) {
-            input.addEventListener('input', updateSubtotalAndTotal);
+        // Hiển thị sản phẩm trên trang giỏ hàng và cập nhật tổng giá trị
+        cartItems.forEach(function(item) {
+            var totalPrice = item.price * item.quantity;
+
+            var productRow1 = `
+            <tr class="cart__table--body__items">
+                                <td class="cart__table--body__list">
+                                    <div class="product__image two  d-flex align-items-center">
+                                        <div class="product__description">
+                                            <h3 class="product__description--name h4"><a href="">${item.name}</a></h3>
+                                            <span class="product__description--variant" style="color: black">Quantity: ${item.quantity}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__table--body__list">
+                                    <span class="cart__price">$${item.price.toLocaleString()}</span>
+                                </td>
+                            </tr>
+            `;
+            var productRow2 = `
+            <tr class=" summary__table--items">
+                                            <td class=" summary__table--list">
+                                                <div class="product__image two  d-flex align-items-center">
+                                                    <div class="product__description">
+                                                        <h3 class="product__description--name h4"><a href="">${item.name}</a></h3>
+                                                        <span class="product__description--variant" style="color: black">Quantity: ${item.quantity}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class=" summary__table--list">
+                                                <span class="cart__price">$${item.price.toLocaleString()}</span>
+                                            </td>
+                                        </tr>
+            `;
+
+            $('.cart__table--body').append(productRow1);
+            $('.summary__table--body').append(productRow2);
         });
 
-        updateSubtotalAndTotal();
+        // Cập nhật tổng giá trị khi trang tải lên
+        updateSubtotal();
     });
 </script>
