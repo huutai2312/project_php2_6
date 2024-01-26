@@ -22,8 +22,7 @@
                     <h2 class="account__content--title h3 mb-20">My Profile</h2>
                     <ul class="account__menu">
                         <li class="account__menu--list active"><a href="/tai-khoan">Dashboard</a></li>
-                        <li class="account__menu--list"><a href="/address">Address</a></li>
-                        <hr>
+                        <li class="account__menu--list"><a href="/address">Addresses</a></li>
                         <?php
                         if (isset($_SESSION['user']) && $user['is_admin'] == 1) {
                             echo '<a href="/admin" class="account__menu--list">Admin Dashboard</a><br>';
@@ -52,27 +51,20 @@
                                     <tr class="account__table--header__child">
                                         <th class="account__table--header__child--items">Order</th>
                                         <th class="account__table--header__child--items">Date</th>
-                                        <th class="account__table--header__child--items">Payment</th>
-                                        <th class="account__table--header__child--items">Status</th>
+                                        <th class="account__table--header__child--items">Payment Status</th>
+                                        <th class="account__table--header__child--items">Fulfillment Status</th>
                                         <th class="account__table--header__child--items">Total</th>
-                                        <th class="account__table--header__child--items">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="account__table--body mobile__none">
-                                    <?php foreach ($orders as $order) : ?>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#<?= $order['id'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['time'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['payment'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['status'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['total_price'] ?></td>
-                                            <td class="account__table--body__child--items">
-                                                <a href="/order?id=<?= $order['id'] ?>"><button class="primary__btn">Detail</button></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                    <tr class="account__table--body__child">
+                                        <td class="account__table--body__child--items">#2014</td>
+                                        <td class="account__table--body__child--items">February 06, 2022</td>
+                                        <td class="account__table--body__child--items">Paid</td>
+                                        <td class="account__table--body__child--items">Unfulfilled</td>
+                                        <td class="account__table--body__child--items">$40.00 USD</td>
+                                    </tr>
                                 </tbody>
-
                                 <tbody class="account__table--body mobile__block">
                                     <tr class="account__table--body__child">
                                         <td class="account__table--body__child--items">

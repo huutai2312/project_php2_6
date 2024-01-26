@@ -49,12 +49,8 @@ class Controller
     public function taiKhoan()
     {
         session_start();
-
         // Kiểm tra xem có session người dùng hay không
         if (isset($_SESSION['user'])) {
-            $email = $_SESSION['user']['email'];
-            $orderModel = new Order();
-            $orders = $orderModel->getOrdersByUser($email);
             // Nếu có, hiển thị trang "Tài Khoản" với thông tin người dùng
             $this->importHeader();
             include "../project_php2_6/app/view/tai-khoan.php";
@@ -293,26 +289,7 @@ class Controller
         $checkoutModel->saveOrder($email, $first_name, $last_name, $company, $address, $phone, $city, $country, $postal_code, $payment);
     }
 
-    public function showOrderUser()
-    {
-        session_start();
-
-        // Kiểm tra xem có session người dùng hay không
-        if (isset($_SESSION['user'])) {
-            // Lấy danh sách đơn hàng của người dùng từ database
-            $orderModel = new Order();
-            $orders = $orderModel->getAllOrders();
-
-            // Hiển thị trang "Tài Khoản" với thông tin đơn hàng
-            $this->importHeader();
-            include "../project_php2_6/app/view/tai-khoan.php";
-            $this->importFooter();
-        } else {
-            header("Location: /login");
-            exit();
-        }
-    }
-
+public function showOrderU
 
     //Admin==================================================
     public function adminIndex()
@@ -381,7 +358,7 @@ class Controller
             $id = $_POST['category_id'];
             $name = $_POST['name'];
             $slug = $_POST['slug'];
-
+            
 
             $categoryModel = new Category();
             $categoryModel->adminUpdateCategory($id, $name, $slug);

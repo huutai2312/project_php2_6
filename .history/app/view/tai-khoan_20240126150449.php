@@ -59,20 +59,14 @@
                                     </tr>
                                 </thead>
                                 <tbody class="account__table--body mobile__none">
-                                    <?php foreach ($orders as $order) : ?>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#<?= $order['id'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['time'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['payment'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['status'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['total_price'] ?></td>
-                                            <td class="account__table--body__child--items">
-                                                <a href="/order?id=<?= $order['id'] ?>"><button class="primary__btn">Detail</button></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                    <tr class="account__table--body__child">
+                                        <td class="account__table--body__child--items">#2014</td>
+                                        <td class="account__table--body__child--items">February 06, 2022</td>
+                                        <td class="account__table--body__child--items">Paid</td>
+                                        <td class="account__table--body__child--items">Unfulfilled</td>
+                                        <td class="account__table--body__child--items">$40.00 USD</td>
+                                    </tr>
                                 </tbody>
-
                                 <tbody class="account__table--body mobile__block">
                                     <tr class="account__table--body__child">
                                         <td class="account__table--body__child--items">

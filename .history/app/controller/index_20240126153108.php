@@ -49,12 +49,12 @@ class Controller
     public function taiKhoan()
     {
         session_start();
-
+        
         // Kiểm tra xem có session người dùng hay không
         if (isset($_SESSION['user'])) {
-            $email = $_SESSION['user']['email'];
+            $user = $_SESSION['user'];
             $orderModel = new Order();
-            $orders = $orderModel->getOrdersByUser($email);
+            $orders = $orderModel->getOrdersByUser($user_id);
             // Nếu có, hiển thị trang "Tài Khoản" với thông tin người dùng
             $this->importHeader();
             include "../project_php2_6/app/view/tai-khoan.php";
@@ -295,24 +295,8 @@ class Controller
 
     public function showOrderUser()
     {
-        session_start();
-
-        // Kiểm tra xem có session người dùng hay không
-        if (isset($_SESSION['user'])) {
-            // Lấy danh sách đơn hàng của người dùng từ database
-            $orderModel = new Order();
-            $orders = $orderModel->getAllOrders();
-
-            // Hiển thị trang "Tài Khoản" với thông tin đơn hàng
-            $this->importHeader();
-            include "../project_php2_6/app/view/tai-khoan.php";
-            $this->importFooter();
-        } else {
-            header("Location: /login");
-            exit();
-        }
+    
     }
-
 
     //Admin==================================================
     public function adminIndex()

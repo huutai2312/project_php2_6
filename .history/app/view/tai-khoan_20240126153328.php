@@ -48,30 +48,30 @@
                         <h2 class="account__content--title h3 mb-20">Orders History</h2>
                         <div class="account__table--area">
                             <table class="account__table">
-                                <thead class="account__table--header">
-                                    <tr class="account__table--header__child">
-                                        <th class="account__table--header__child--items">Order</th>
-                                        <th class="account__table--header__child--items">Date</th>
-                                        <th class="account__table--header__child--items">Payment</th>
-                                        <th class="account__table--header__child--items">Status</th>
-                                        <th class="account__table--header__child--items">Total</th>
-                                        <th class="account__table--header__child--items">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="account__table--body mobile__none">
-                                    <?php foreach ($orders as $order) : ?>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#<?= $order['id'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['time'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['payment'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['status'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['total_price'] ?></td>
-                                            <td class="account__table--body__child--items">
-                                                <a href="/order?id=<?= $order['id'] ?>"><button class="primary__btn">Detail</button></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
+                            <thead class="account__table--header">
+    <tr class="account__table--header__child">
+        <th class="account__table--header__child--items">Order</th>
+        <th class="account__table--header__child--items">Date</th>
+        <th class="account__table--header__child--items">Payment</th>
+        <th class="account__table--header__child--items">Status</th>
+        <th class="account__table--header__child--items">Total</th>
+        <th class="account__table--header__child--items">Action</th>
+    </tr>
+</thead>
+<tbody class="account__table--body mobile__none">
+    <?php foreach ($orders as $order): ?>
+        <tr class="account__table--body__child">
+            <td class="account__table--body__child--items">#<?= $order['id'] ?></td>
+            <td class="account__table--body__child--items"><?= $order['time'] ?></td>
+            <td class="account__table--body__child--items"><?= $order['payment'] ?></td>
+            <td class="account__table--body__child--items"><?= $order['status'] ?></td>
+            <td class="account__table--body__child--items"><?= $order['total_price'] ?></td>
+            <td class="account__table--body__child--items">
+                <a href="/order?id=<?= $order['id'] ?>"><button class="primary__btn">Detail</button></a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
 
                                 <tbody class="account__table--body mobile__block">
                                     <tr class="account__table--body__child">
