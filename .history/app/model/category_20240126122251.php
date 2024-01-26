@@ -38,14 +38,18 @@ class Category
         return $result;
     }
     
-    public function adminAddCategory($name, $slug)
+    public function adminAddCategory($name, $slug, $date)
     {
         $conn = $this->getConnection();
-        $query = "INSERT INTO ps_category (name, slug, date_created) 
-              VALUES (:name, :slug, NOW())";
+        $query = "INSERT INTO ps_products (name, price, quantity, image, short_desc, long_desc, date_created) 
+              VALUES (:name, :price, :quantity, :image, :short_desc, :long_desc, NOW())";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+        $stmt->bindParam(':price', $price, PDO::PARAM_STR);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        $stmt->bindParam(':image', $image, PDO::PARAM_STR);
+        $stmt->bindParam(':short_desc', $shortDesc, PDO::PARAM_STR);
+        $stmt->bindParam(':long_desc', $longDesc, PDO::PARAM_STR);
 
         try {
             $stmt->execute();

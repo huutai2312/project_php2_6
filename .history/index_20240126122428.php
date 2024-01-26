@@ -37,8 +37,8 @@ $router
     ->get('/admin', [Controller::class, 'adminIndex'])
     //+Product
     ->get('/admin/categories', [Controller::class, 'adminCategories'])
-    ->get('/admin/add_category', [Controller::class, 'adminAddCategory'])
-    ->post('/admin/add_category', [Controller::class, 'adminAddCategory'])
+    ->get('/admin/add_product', [Controller::class, 'adminAddProduct'])
+    ->post('/admin/add_product', [Controller::class, 'adminAddProduct'])
     ->get('/admin/edit_product', [Controller::class, 'adminEditProduct'])
     ->get('/admin/update_product', [Controller::class, 'adminUpdateProduct'])
     ->post('/admin/update_product', [Controller::class, 'adminUpdateProduct'])

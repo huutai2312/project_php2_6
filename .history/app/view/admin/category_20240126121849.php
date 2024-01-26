@@ -57,7 +57,7 @@
                 </div>
                 <div class="account__wrapper">
                     <div class="account__content">
-                        <h2 class="account__content--title h3 mb-20">List Categories | <em><a href="/admin/add_category">Add Category</a></em></h2>
+                        <h2 class="account__content--title h3 mb-20">List Categories | <em><a href="/admin/add_categ">Add Category</a></em></h2>
                         <div class="account__table--area">
                             <table class="account__table">
                                 <thead class="account__table--header">

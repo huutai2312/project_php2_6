@@ -325,17 +325,25 @@ class Controller
             $name = $_POST['name'];
             $slug = $_POST['slug'];
 
+            // Xử lý tải lên hình ảnh
+            // Kiểm tra xem người dùng đã chọn hình ảnh hay chưa
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $targetDir = "public/uploads/";
+                $targetFile = $targetDir . basename($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
+            }
+
             // Thực hiện gọi phương thức từ model để thêm sản phẩm vào cơ sở dữ liệu
-            $categoryModel = new Category();
-            $categoryModel->adminAddCategory($name, $slug);
+            $productModel = new SanPham();
+            $productModel->adminAddProduct($name, $price, $quantity, $image, $shortDesc, $longDesc);
 
             // Chuyển hướng về trang danh sách sản phẩm sau khi thêm thành công
-            header("Location: /admin/categories");
+            header("Location: /admin/products");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_6/app/view/admin/add_category.php";
+        include "../project_php2_6/app/view/admin/add_product.php";
         $this->importFooter();
     }
     

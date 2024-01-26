@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 24, 2024 lúc 04:18 PM
+-- Thời gian đã tạo: Th1 26, 2024 lúc 05:26 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -39,6 +39,28 @@ CREATE TABLE `ps_cart` (
   `total_price` int DEFAULT NULL,
   `date_created` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ps_category`
+--
+
+CREATE TABLE `ps_category` (
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_created` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ps_category`
+--
+
+INSERT INTO `ps_category` (`id`, `name`, `slug`, `date_created`) VALUES
+(1, 'abc', 'abc', ''),
+(2, 'aa', 'aa', '2024-01-26 12:25:31'),
+(3, 'ff', 'ff', '2024-01-26 12:26:09');
 
 -- --------------------------------------------------------
 
@@ -166,6 +188,12 @@ ALTER TABLE `ps_cart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `ps_category`
+--
+ALTER TABLE `ps_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `ps_order`
 --
 ALTER TABLE `ps_order`
@@ -199,6 +227,12 @@ ALTER TABLE `ps_user`
 --
 ALTER TABLE `ps_cart`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `ps_category`
+--
+ALTER TABLE `ps_category`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `ps_order`

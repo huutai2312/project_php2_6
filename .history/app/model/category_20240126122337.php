@@ -38,7 +38,7 @@ class Category
         return $result;
     }
     
-    public function adminAddCategory($name, $slug)
+    public function adminAddCategory($name, $slug, $date_created)
     {
         $conn = $this->getConnection();
         $query = "INSERT INTO ps_category (name, slug, date_created) 

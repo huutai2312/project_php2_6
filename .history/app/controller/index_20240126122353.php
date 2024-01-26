@@ -330,12 +330,12 @@ class Controller
             $categoryModel->adminAddCategory($name, $slug);
 
             // Chuyển hướng về trang danh sách sản phẩm sau khi thêm thành công
-            header("Location: /admin/categories");
+            header("Location: /admin/products");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_6/app/view/admin/add_category.php";
+        include "../project_php2_6/app/view/admin/add_product.php";
         $this->importFooter();
     }
     

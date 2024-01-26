@@ -330,7 +330,7 @@ class Controller
             $categoryModel->adminAddCategory($name, $slug);
 
             // Chuyển hướng về trang danh sách sản phẩm sau khi thêm thành công
-            header("Location: /admin/categories");
+            header("Location: /admin/cate");
             exit;
         }
 

@@ -317,25 +317,37 @@ class Controller
         $this->importFooter();
     }
     
-    public function adminAddCategory()
+    public function adminAddProduct()
     {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Lấy dữ liệu từ form
             $name = $_POST['name'];
-            $slug = $_POST['slug'];
+            $price = $_POST['price'];
+            $quantity = $_POST['quantity'];
+            $image = $_FILES['image']['name'];
+            $shortDesc = $_POST['short_desc'];
+            $longDesc = $_POST['long_desc'];
+
+            // Xử lý tải lên hình ảnh
+            // Kiểm tra xem người dùng đã chọn hình ảnh hay chưa
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $targetDir = "public/uploads/";
+                $targetFile = $targetDir . basename($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
+            }
 
             // Thực hiện gọi phương thức từ model để thêm sản phẩm vào cơ sở dữ liệu
-            $categoryModel = new Category();
-            $categoryModel->adminAddCategory($name, $slug);
+            $productModel = new SanPham();
+            $productModel->adminAddProduct($name, $price, $quantity, $image, $shortDesc, $longDesc);
 
             // Chuyển hướng về trang danh sách sản phẩm sau khi thêm thành công
-            header("Location: /admin/categories");
+            header("Location: /admin/products");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_6/app/view/admin/add_category.php";
+        include "../project_php2_6/app/view/admin/add_product.php";
         $this->importFooter();
     }
     

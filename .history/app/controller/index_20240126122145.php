@@ -325,17 +325,18 @@ class Controller
             $name = $_POST['name'];
             $slug = $_POST['slug'];
 
+
             // Thực hiện gọi phương thức từ model để thêm sản phẩm vào cơ sở dữ liệu
-            $categoryModel = new Category();
-            $categoryModel->adminAddCategory($name, $slug);
+            $productModel = new SanPham();
+            $productModel->adminAddProduct($name, $price, $quantity, $image, $shortDesc, $longDesc);
 
             // Chuyển hướng về trang danh sách sản phẩm sau khi thêm thành công
-            header("Location: /admin/categories");
+            header("Location: /admin/products");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_6/app/view/admin/add_category.php";
+        include "../project_php2_6/app/view/admin/add_product.php";
         $this->importFooter();
     }
     
