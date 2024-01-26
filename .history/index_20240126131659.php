@@ -61,7 +61,6 @@ $router
     ->get('/admin/update_user', [Controller::class, 'adminUpdateUser'])
     ->post('/admin/update_user', [Controller::class, 'adminUpdateUser'])
     ->get('/admin/delete_user', [Controller::class, 'adminDeleteUser'])
-    
     //+Order
     ->get('/admin/orders', [Controller::class, 'adminOrders']);
 

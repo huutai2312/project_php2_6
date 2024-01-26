@@ -88,7 +88,7 @@ class Category
     public function adminDeleteCategory($id)
     {
         $conn = $this->getConnection();
-        $sql = "DELETE FROM ps_category WHERE id = :id";
+        $sql = "DELETE FROM ps_products WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 

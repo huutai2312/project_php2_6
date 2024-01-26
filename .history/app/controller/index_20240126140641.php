@@ -389,11 +389,11 @@ class Controller
         $id = $_GET['id'];
 
         // Thực hiện gọi phương thức xóa sản phẩm từ model
-        $categoryModel = new Category();
-        $categoryModel->adminDeleteCategory($id);
+        $sanPhamModel = new SanPham();
+        $sanPhamModel->adminDeleteCategory($id);
 
         // Chuyển hướng về trang danh sách sản phẩm sau khi xóa thành công
-        header("Location: /admin/categories");
+        header("Location: /admin/products");
         exit;
     }
 

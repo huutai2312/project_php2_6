@@ -374,28 +374,7 @@ class Controller
         $this->importFooter();
     }
 
-    public function adminDeleteCategory()
-    {
-        session_start();
-        // Kiểm tra xác thực người dùng là quản trị viên
-        $user = $_SESSION['user'];
-        if ($user['is_admin'] != 1) {
-            echo "<script>alert('Bạn không có quyền truy cập!')</script>";
-            echo "<script>window.location.href='/';</script>";
-            exit;
-        }
 
-        // Lấy ID của sản phẩm cần xóa từ tham số truyền vào
-        $id = $_GET['id'];
-
-        // Thực hiện gọi phương thức xóa sản phẩm từ model
-        $categoryModel = new Category();
-        $categoryModel->adminDeleteCategory($id);
-
-        // Chuyển hướng về trang danh sách sản phẩm sau khi xóa thành công
-        header("Location: /admin/categories");
-        exit;
-    }
 
     public function adminProducts()
     {
