@@ -47,8 +47,8 @@
                     ?>
                     <ul class="account__menu">
                         <li class="account__menu--list"><a href="/admin">Dashboard</a></li>
-                        <li class="account__menu--list"><a href="/admin/categories">Categories</a></li>
                         <li class="account__menu--list active"><a href="/admin/products">Products</a></li>
+                        <li class="account__menu--list"><a href="/admin/users">Users</a></li>
                         <li class="account__menu--list"><a href="/admin/users">Users</a></li>
                         <li class="account__menu--list"><a href="/admin/orders">Orders</a></li>
                         <hr>

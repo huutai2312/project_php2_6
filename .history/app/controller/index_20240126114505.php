@@ -7,7 +7,6 @@ use App\model\SanPham;
 use App\model\Order;
 use App\model\User;
 use App\model\Cart;
-use App\model\Category;
 use App\model\Checkout;
 
 class Controller
@@ -307,13 +306,13 @@ class Controller
         }
         $this->importFooter();
     }
-    public function adminCategories()
+    public function adminCăts()
     {
         session_start();
         $this->importHeader();
-        $categoryModel = new Category();
-        $categories = $categoryModel->getAllCategoriesDesc();
-        include "../project_php2_6/app/view/admin/category.php";
+        $sanPhamModel = new SanPham();
+        $products = $sanPhamModel->getAllProductsDesc();
+        include "../project_php2_6/app/view/admin/products.php";
         $this->importFooter();
     }
     

@@ -312,8 +312,8 @@ class Controller
         session_start();
         $this->importHeader();
         $categoryModel = new Category();
-        $categories = $categoryModel->getAllCategoriesDesc();
-        include "../project_php2_6/app/view/admin/category.php";
+        $products = $categoryModel->getAllProductsDesc();
+        include "../project_php2_6/app/view/admin/products.php";
         $this->importFooter();
     }
     

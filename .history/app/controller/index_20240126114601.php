@@ -313,7 +313,7 @@ class Controller
         $this->importHeader();
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategoriesDesc();
-        include "../project_php2_6/app/view/admin/category.php";
+        include "../project_php2_6/app/view/admin/products.php";
         $this->importFooter();
     }
     

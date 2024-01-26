@@ -39,9 +39,8 @@
                     ?>
                     <ul class="account__menu">
                         <li class="account__menu--list"><a href="/admin">Dashboard</a></li>
-                        <li class="account__menu--list"><a href="/admin/categories">Categories</a></li>
-                        <li class="account__menu--list"><a href="/admin/products">Products</a></li>
-                        <li class="account__menu--list active"><a href="/admin/users">Users</a></li>
+                        <li class="account__menu--list active"><a href="/admin/products">Products</a></li>
+                        <li class="account__menu--list"><a href="/admin/users">Users</a></li>
                         <li class="account__menu--list"><a href="/admin/orders">Orders</a></li>
                         <hr>
                         <?php
@@ -57,16 +56,17 @@
                 </div>
                 <div class="account__wrapper">
                     <div class="account__content">
-                        <h2 class="account__content--title h3 mb-20">List Users | <em><a href="/admin/add_user">Add User</a></em></h2>
+                        <h2 class="account__content--title h3 mb-20">List Products | <em><a href="/admin/add_product">Add Product</a></em></h2>
                         <div class="account__table--area">
                             <table class="account__table">
                                 <thead class="account__table--header">
                                     <tr class="account__table--header__child">
                                         <th class="account__table--header__child--items">#</th>
                                         <th class="account__table--header__child--items">ID</th>
+                                        <th class="account__table--header__child--items">Image</th>
                                         <th class="account__table--header__child--items">Name</th>
-                                        <th class="account__table--header__child--items">Email</th>
-                                        <th class="account__table--header__child--items">Role</th>
+                                        <th class="account__table--header__child--items">Price</th>
+                                        <th class="account__table--header__child--items">Quantity</th>
                                         <th class="account__table--header__child--items">Date Created</th>
                                         <th class="account__table--header__child--items">Action</th>
                                     </tr>
@@ -74,26 +74,19 @@
                                 <tbody class="account__table--body mobile__none">
                                     <?php
                                     $stt = 1;
-                                    foreach ($users as $user) :
+                                    foreach ($products as $product) :
                                     ?>
                                         <tr class="account__table--body__child">
                                             <td class="account__table--body__child--items">#<?php echo $stt; ?></td>
-                                            <td class="account__table--body__child--items"><?php echo $user['id']; ?></td>
-                                            <td class="account__table--body__child--items"><?php echo $user["name"] ?></td>
-                                            <td class="account__table--body__child--items"><?php echo $user["email"] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $product['id']; ?></td>
+                                            <td class="account__table--body__child--items"><img class="" src="/public/uploads/<?php echo $product['image']; ?>" alt="product-img" width="30px"></td>
+                                            <td class="account__table--body__child--items"><?php echo $product["name"] ?></td>
+                                            <td class="account__table--body__child--items">$<?php echo number_format($product["price"]) ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $product["quantity"] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $product["date_created"] ?></td>
                                             <td class="account__table--body__child--items">
-                                                <?php
-                                                if ($user["is_admin"] == 1) {
-                                                    echo "Admin";
-                                                }else{
-                                                    echo "Customer";
-                                                }
-                                                ?>
-                                            </td>
-                                            <td class="account__table--body__child--items"><?php echo $user["date_created"] ?></td>
-                                            <td class="account__table--body__child--items">
-                                                <a href="/admin/edit_user?id=<?php echo $user['id']; ?>"><button class="primary__btn">Edit</button></a>
-                                                <a href="/admin/delete_user?id=<?php echo $user['id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa user này không?')"><button class="primary__btn">Delete</button></a>
+                                                <a href="/admin/edit_product?id=<?php echo $product['id']; ?>"><button class="primary__btn">Edit</button></a>
+                                                <a href="/admin/delete_product?id=<?php echo $product['id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"><button class="primary__btn">Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php
@@ -104,7 +97,7 @@
                                 <tbody class="account__table--body mobile__block">
                                     <?php
                                     $stt = 1;
-                                    foreach ($users as $user) :
+                                    foreach ($products as $product) :
                                     ?>
                                         <tr class="account__table--body__child">
                                             <td class="account__table--body__child--items">
@@ -113,27 +106,27 @@
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>ID</strong>
-                                                <span><?php echo $user['id']; ?></span>
+                                                <span><?php echo $product['id']; ?></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Image</strong>
-                                                <span><img class="" src="public/uploads/<?php echo $user['image']; ?>" alt="product-img" width="30px"></span>
+                                                <span><img class="" src="public/uploads/<?php echo $product['image']; ?>" alt="product-img" width="30px"></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Name</strong>
-                                                <span><?php echo $user["name"] ?></span>
+                                                <span><?php echo $product["name"] ?></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Price</strong>
-                                                <span>$<?php echo number_format($user["price"]) ?></span>
+                                                <span>$<?php echo number_format($product["price"]) ?></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Quantity</strong>
-                                                <span><?php echo $user["quantity"] ?></span>
+                                                <span><?php echo $product["quantity"] ?></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Date Created</strong>
-                                                <span><?php echo $user["date_created"] ?></span>
+                                                <span><?php echo $product["date_created"] ?></span>
                                             </td>
                                             <td class="account__table--body__child--items">
                                                 <strong>Action</strong>
