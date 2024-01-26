@@ -40,9 +40,9 @@ $router
     ->get('/admin/add_category', [Controller::class, 'adminAddCategory'])
     ->post('/admin/add_category', [Controller::class, 'adminAddCategory'])
     ->get('/admin/edit_category', [Controller::class, 'adminEditCategory'])
-    ->get('/admin/update_category', [Controller::class, 'adminUpdateCategory'])
-    ->post('/admin/update_category', [Controller::class, 'adminUpdateCategory'])
-    ->get('/admin/delete_category', [Controller::class, 'adminDeleteCategory'])
+    ->get('/admin/update_category', [Controller::class, 'adminUpdateCatgory'])
+    ->post('/admin/update_product', [Controller::class, 'adminUpdateProduct'])
+    ->get('/admin/delete_product', [Controller::class, 'adminDeleteProduct'])
     
     //+Product
     ->get('/admin/products', [Controller::class, 'adminProducts'])

@@ -370,7 +370,7 @@ class Controller
         }
 
         $this->importHeader();
-        include "../project_php2_5/app/view/admin/categories.php";
+        include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
 

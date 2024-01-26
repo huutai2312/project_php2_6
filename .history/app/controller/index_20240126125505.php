@@ -361,16 +361,29 @@ class Controller
             $slug = $_POST['slug'];
             
 
-            $categoryModel = new Category();
-            $categoryModel->adminUpdateCategory($id, $name, $slug);
+            if ($imageSource === 'new' && !$keepCurrentImage) {
+                $image = $_FILES['new_image']['name'];
+                $targetDir = "public/uploads/";
+                $targetFile = $targetDir . basename($_FILES['new_image']['name']);
+                move_uploaded_file($_FILES['new_image']['tmp_name'], $targetFile);
+            } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
+                $image = $_POST['existing_image'];
+            } elseif ($keepCurrentImage) {
+                $productModel = new SanPham();
+                $existingProduct = $productModel->getProductById($id);
+                $image = $existingProduct['image'];
+            }
+
+            $productModel = new SanPham();
+            $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
 
             $encodedId = urlencode($id);
-            header("Location: /admin/edit_category?id=$encodedId");
+            header("Location: /admin/edit_product?id=$encodedId");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_5/app/view/admin/categories.php";
+        include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
 

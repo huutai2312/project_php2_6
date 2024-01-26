@@ -316,7 +316,7 @@ class Controller
         include "../project_php2_6/app/view/admin/category.php";
         $this->importFooter();
     }
-
+    
     public function adminAddCategory()
     {
         session_start();
@@ -338,42 +338,59 @@ class Controller
         include "../project_php2_6/app/view/admin/add_category.php";
         $this->importFooter();
     }
-
-    public function adminEditCategory()
+    
+    public function adminEditProduct()
     {
         session_start();
         $this->importHeader();
         // Lấy thông tin sản phẩm từ cơ sở dữ liệu dựa trên ID
         $id = $_GET['id'];
-        $categoryModel = new Category();
-        $category = $categoryModel->getCategoryById($id);
-        include "../project_php2_6/app/view/admin/edit_category.php";
+        $sanPhamModel = new SanPham();
+        $product = $sanPhamModel->getProductById($id);
+        include "../project_php2_6/app/view/admin/edit_product.php";
         $this->importFooter();
     }
 
-    public function adminUpdateCategory()
+    public function adminUpdateProduct()
     {
         session_start();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['category_id'];
+            $id = $_POST['product_id'];
             $name = $_POST['name'];
-            $slug = $_POST['slug'];
-            
+            $price = $_POST['price'];
+            $quantity = $_POST['quantity'];
+            $shortDesc = $_POST['short_desc'];
+            $longDesc = $_POST['long_desc'];
+            $imageSource = $_POST['image_source'];
+            $keepCurrentImage = isset($_POST['keep_current_image']) && $_POST['keep_current_image'] == "1";
 
-            $categoryModel = new Category();
-            $categoryModel->adminUpdateCategory($id, $name, $slug);
+            if ($imageSource === 'new' && !$keepCurrentImage) {
+                $image = $_FILES['new_image']['name'];
+                $targetDir = "public/uploads/";
+                $targetFile = $targetDir . basename($_FILES['new_image']['name']);
+                move_uploaded_file($_FILES['new_image']['tmp_name'], $targetFile);
+            } elseif ($imageSource === 'existing' && !$keepCurrentImage) {
+                $image = $_POST['existing_image'];
+            } elseif ($keepCurrentImage) {
+                $productModel = new SanPham();
+                $existingProduct = $productModel->getProductById($id);
+                $image = $existingProduct['image'];
+            }
+
+            $productModel = new SanPham();
+            $productModel->adminUpdateProduct($id, $name, $price, $quantity, $image, $shortDesc, $longDesc);
 
             $encodedId = urlencode($id);
-            header("Location: /admin/edit_category?id=$encodedId");
+            header("Location: /admin/edit_product?id=$encodedId");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_5/app/view/admin/categories.php";
+        include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
-
+    
     public function adminProducts()
     {
         session_start();

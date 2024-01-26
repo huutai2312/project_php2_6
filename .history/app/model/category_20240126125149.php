@@ -69,7 +69,7 @@ class Category
     public function adminUpdateCategory($id, $name, $slug)
     {
         $conn = $this->getConnection();
-        $query = "UPDATE ps_category
+        $query = "UPDATE ps_category 
               SET name = :name, slug = :slug
               WHERE id = :id";
         $stmt = $conn->prepare($query);

@@ -365,12 +365,12 @@ class Controller
             $categoryModel->adminUpdateCategory($id, $name, $slug);
 
             $encodedId = urlencode($id);
-            header("Location: /admin/edit_category?id=$encodedId");
+            header("Location: /admin/edit_product?id=$encodedId");
             exit;
         }
 
         $this->importHeader();
-        include "../project_php2_5/app/view/admin/categories.php";
+        include "../project_php2_5/app/view/admin/products.php";
         $this->importFooter();
     }
 

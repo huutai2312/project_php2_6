@@ -38,16 +38,6 @@ class Category
         return $result;
     }
 
-    public function getCategoryById($category_id)
-    {
-        $conn = $this->getConnection();
-        $query = "SELECT * FROM ps_category WHERE id = :id";
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(':id', $category_id, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
 
     public function adminAddCategory($name, $slug)
     {
@@ -69,14 +59,14 @@ class Category
     public function adminUpdateCategory($id, $name, $slug)
     {
         $conn = $this->getConnection();
-        $query = "UPDATE ps_category
+        $query = "UPDATE ps_category 
               SET name = :name, slug = :slug
               WHERE id = :id";
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->bindValue(':slug', $slug, PDO::PARAM_STR);
-
+        
         try {
             $stmt->execute();
         } catch (PDOException $e) {
