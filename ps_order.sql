@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 24, 2024 lúc 04:17 PM
+-- Thời gian đã tạo: Th1 28, 2024 lúc 09:05 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -49,8 +49,7 @@ CREATE TABLE `ps_order` (
 --
 
 INSERT INTO `ps_order` (`id`, `email`, `first_name`, `last_name`, `company`, `address`, `phone`, `city`, `country`, `postal_code`, `total_price`, `payment`, `status`, `time`) VALUES
-(38, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:53:23'),
-(39, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:56:06');
+(47, 'huutai90909@gmail.com', 'tai', 'nguyen', 'NHT', 'fdgbg', 654124324, '', 'vietnam', '', NULL, 'COD', 'pending', '27-01-2024 05:01:25');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -70,7 +69,7 @@ ALTER TABLE `ps_order`
 -- AUTO_INCREMENT cho bảng `ps_order`
 --
 ALTER TABLE `ps_order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

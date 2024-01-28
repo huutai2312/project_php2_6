@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 26, 2024 lúc 05:26 AM
+-- Thời gian đã tạo: Th1 28, 2024 lúc 09:05 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -40,8 +40,7 @@ CREATE TABLE `ps_category` (
 
 INSERT INTO `ps_category` (`id`, `name`, `slug`, `date_created`) VALUES
 (1, 'abc', 'abc', ''),
-(2, 'aa', 'aa', '2024-01-26 12:25:31'),
-(3, 'ff', 'ff', '2024-01-26 12:26:09');
+(2, 'aad', 'aad', '2024-01-26 12:25:31');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -61,7 +60,7 @@ ALTER TABLE `ps_category`
 -- AUTO_INCREMENT cho bảng `ps_category`
 --
 ALTER TABLE `ps_category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 24, 2024 lúc 04:17 PM
+-- Thời gian đã tạo: Th1 28, 2024 lúc 09:06 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -36,6 +36,16 @@ CREATE TABLE `ps_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `ps_order_detail`
+--
+
+INSERT INTO `ps_order_detail` (`id`, `order_id`, `product_id`, `quantity`, `product_price`) VALUES
+(16, 47, 2, 2, '25000000'),
+(17, 47, 7, 3, '5678'),
+(18, 47, 8, 100, '2312'),
+(19, 47, 1, 2, '15000000');
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -54,7 +64,7 @@ ALTER TABLE `ps_order_detail`
 -- AUTO_INCREMENT cho bảng `ps_order_detail`
 --
 ALTER TABLE `ps_order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

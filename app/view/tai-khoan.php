@@ -22,7 +22,7 @@
                     <h2 class="account__content--title h3 mb-20">My Profile</h2>
                     <ul class="account__menu">
                         <li class="account__menu--list active"><a href="/tai-khoan">Dashboard</a></li>
-                        <li class="account__menu--list"><a href="/address">Address</a></li>
+                        <li class="account__menu--list"><a href="/information">Information</a></li>
                         <hr>
                         <?php
                         if (isset($_SESSION['user']) && $user['is_admin'] == 1) {
@@ -61,13 +61,13 @@
                                 <tbody class="account__table--body mobile__none">
                                     <?php foreach ($orders as $order) : ?>
                                         <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#<?= $order['id'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['time'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['payment'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['status'] ?></td>
-                                            <td class="account__table--body__child--items"><?= $order['total_price'] ?></td>
+                                            <td class="account__table--body__child--items">#<?php echo $order['id'] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $order['time'] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $order['payment'] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $order['status'] ?></td>
+                                            <td class="account__table--body__child--items"><?php echo $order['total_price'] ?></td>
                                             <td class="account__table--body__child--items">
-                                                <a href="/order?id=<?= $order['id'] ?>"><button class="primary__btn">Detail</button></a>
+                                                <a href="/order_detail?id=<?php echo $order['id'] ?>"><button class="primary__btn">Detail</button></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

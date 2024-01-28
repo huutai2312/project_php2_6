@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 24, 2024 lúc 04:18 PM
+-- Thời gian đã tạo: Th1 28, 2024 lúc 09:06 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -59,7 +59,8 @@ INSERT INTO `ps_user` (`id`, `name`, `first_name`, `last_name`, `age`, `company`
 (7, 'j', '', '', '0', '', 'j@gmail.com', '$2y$10$cpbU5UMrt/tllOijVB5w0O3opbhsR5bv8RfrR8mNIAq4r2tlFZmRG', '', '', '0', '', '', 0, 0, ''),
 (8, ',sjfbv', '', '0', '5565', '', 'n@gmail.com', NULL, '', '', '0', '', '', 0, 0, ''),
 (9, 'fgng', NULL, NULL, NULL, NULL, '12@gmail.com', '$2y$10$Pe/SJFLJtjzxRsWCuhBuiO7BoSAuFs7PwT904s2cKKKVXJZdHbOTm', '', NULL, '0', NULL, NULL, NULL, 0, ''),
-(11, 'ggg', NULL, NULL, NULL, NULL, 'g@gmail.com', '$2y$10$M.1crdnlLKLXyoM33jIa3Olz0HSsdZi9G9bxW..7jZM2nK.dNMm.u', '', NULL, '0', NULL, NULL, NULL, 0, '22-01-2024 06:56:54');
+(11, 'ggg', NULL, NULL, NULL, NULL, 'g@gmail.com', '$2y$10$M.1crdnlLKLXyoM33jIa3Olz0HSsdZi9G9bxW..7jZM2nK.dNMm.u', '', NULL, '0', NULL, NULL, NULL, 0, '22-01-2024 06:56:54'),
+(12, 'nht', 'tai', 'nguyen', '20', 'NHT', 'huutai90909@gmail.com', '$2y$10$EOowQnE/p6QJcJ8wo7F5tevO96IHYAUxebgwCmFf90Pq6Dkys/Lya', '', NULL, '0', NULL, NULL, NULL, 1, '26-01-2024 07:52:01');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -79,7 +80,7 @@ ALTER TABLE `ps_user`
 -- AUTO_INCREMENT cho bảng `ps_user`
 --
 ALTER TABLE `ps_user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

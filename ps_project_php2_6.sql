@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 26, 2024 lúc 05:26 AM
+-- Thời gian đã tạo: Th1 28, 2024 lúc 09:05 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -59,8 +59,7 @@ CREATE TABLE `ps_category` (
 
 INSERT INTO `ps_category` (`id`, `name`, `slug`, `date_created`) VALUES
 (1, 'abc', 'abc', ''),
-(2, 'aa', 'aa', '2024-01-26 12:25:31'),
-(3, 'ff', 'ff', '2024-01-26 12:26:09');
+(2, 'aad', 'aad', '2024-01-26 12:25:31');
 
 -- --------------------------------------------------------
 
@@ -90,8 +89,7 @@ CREATE TABLE `ps_order` (
 --
 
 INSERT INTO `ps_order` (`id`, `email`, `first_name`, `last_name`, `company`, `address`, `phone`, `city`, `country`, `postal_code`, `total_price`, `payment`, `status`, `time`) VALUES
-(38, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:53:23'),
-(39, 'a@gmail.com', 'aaa', 'bb', 'XDNT', 'asdavasdv', 987654321, 'hcm', 'vietnam', '70000', NULL, 'COD', 'pending', '22-01-2024 06:56:06');
+(47, 'huutai90909@gmail.com', 'tai', 'nguyen', 'NHT', 'fdgbg', 654124324, '', 'vietnam', '', NULL, 'COD', 'pending', '27-01-2024 05:01:25');
 
 -- --------------------------------------------------------
 
@@ -106,6 +104,16 @@ CREATE TABLE `ps_order_detail` (
   `quantity` int DEFAULT NULL,
   `product_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ps_order_detail`
+--
+
+INSERT INTO `ps_order_detail` (`id`, `order_id`, `product_id`, `quantity`, `product_price`) VALUES
+(16, 47, 2, 2, '25000000'),
+(17, 47, 7, 3, '5678'),
+(18, 47, 8, 100, '2312'),
+(19, 47, 1, 2, '15000000');
 
 -- --------------------------------------------------------
 
@@ -175,7 +183,8 @@ INSERT INTO `ps_user` (`id`, `name`, `first_name`, `last_name`, `age`, `company`
 (7, 'j', '', '', '0', '', 'j@gmail.com', '$2y$10$cpbU5UMrt/tllOijVB5w0O3opbhsR5bv8RfrR8mNIAq4r2tlFZmRG', '', '', '0', '', '', 0, 0, ''),
 (8, ',sjfbv', '', '0', '5565', '', 'n@gmail.com', NULL, '', '', '0', '', '', 0, 0, ''),
 (9, 'fgng', NULL, NULL, NULL, NULL, '12@gmail.com', '$2y$10$Pe/SJFLJtjzxRsWCuhBuiO7BoSAuFs7PwT904s2cKKKVXJZdHbOTm', '', NULL, '0', NULL, NULL, NULL, 0, ''),
-(11, 'ggg', NULL, NULL, NULL, NULL, 'g@gmail.com', '$2y$10$M.1crdnlLKLXyoM33jIa3Olz0HSsdZi9G9bxW..7jZM2nK.dNMm.u', '', NULL, '0', NULL, NULL, NULL, 0, '22-01-2024 06:56:54');
+(11, 'ggg', NULL, NULL, NULL, NULL, 'g@gmail.com', '$2y$10$M.1crdnlLKLXyoM33jIa3Olz0HSsdZi9G9bxW..7jZM2nK.dNMm.u', '', NULL, '0', NULL, NULL, NULL, 0, '22-01-2024 06:56:54'),
+(12, 'nht', 'tai', 'nguyen', '20', 'NHT', 'huutai90909@gmail.com', '$2y$10$EOowQnE/p6QJcJ8wo7F5tevO96IHYAUxebgwCmFf90Pq6Dkys/Lya', '', NULL, '0', NULL, NULL, NULL, 1, '26-01-2024 07:52:01');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -232,19 +241,19 @@ ALTER TABLE `ps_cart`
 -- AUTO_INCREMENT cho bảng `ps_category`
 --
 ALTER TABLE `ps_category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `ps_order`
 --
 ALTER TABLE `ps_order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT cho bảng `ps_order_detail`
 --
 ALTER TABLE `ps_order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `ps_products`
@@ -256,7 +265,7 @@ ALTER TABLE `ps_products`
 -- AUTO_INCREMENT cho bảng `ps_user`
 --
 ALTER TABLE `ps_user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

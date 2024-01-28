@@ -313,6 +313,16 @@ class Controller
         }
     }
 
+    public function orderDetail($id){
+
+        
+        $this->importHeader();
+        $orderModel = new Order();
+        $order = $orderModel->getOrderById($id);
+        include "../project_php2_6/app/view/order_detail.php"; 
+        $this->importFooter();
+      
+      }
 
     //Admin==================================================
     public function adminIndex()

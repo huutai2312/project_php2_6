@@ -28,10 +28,11 @@ class Order
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
-    public function getOrdersByUser($email) {
+
+    public function getOrdersByUser($email)
+    {
         $conn = $this->getConnection();
-      
+
         $query = "
           SELECT o.*, COUNT(od.quantity) AS total_quantity
           FROM ps_order o
@@ -39,11 +40,33 @@ class Order
           WHERE o.email = ?
           GROUP BY o.id
         ";
-      
+
         $stmt = $conn->prepare($query);
         $stmt->execute([$email]);
-      
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-      }
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getOrderById($orderId)
+    {
+        $conn = $this->getConnection();
+
+        $query = "
+          SELECT 
+            o.*, 
+            od.product_id, 
+            p.name as product_name,
+            od.quantity, 
+            od.price 
+          FROM ps_order o
+          JOIN ps_order_detail od ON o.id = od.order_id
+          JOIN ps_product p ON p.id = od.product_id
+          WHERE o.id = ?
+        ";
+
+        $stmt = $conn->prepare($query);
+        $stmt->execute([$orderId]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
