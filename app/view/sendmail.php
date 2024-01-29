@@ -11,13 +11,13 @@ try {
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = 'thskhai@gmail.com'; // SMTP username
-    $mail->Password = 'mods ejcq xrfr zjbm'; // SMTP password
+    $mail->Username = '@gmail.com'; // SMTP username
+    $mail->Password = 'xxx'; // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port = 587; // TCP port to connect to
     //Recipients
-    $mail->setFrom('thskhai@gmail.com', 'Mailer');
-    $mail->addAddress('thskhai@gmail.com', 'Joe User'); // Add a recipient
+    $mail->setFrom('@gmail.com', 'Mailer');
+    $mail->addAddress('@gmail.com', 'Joe User'); // Add a recipient
     // Attachments
     //  $mail->addAttachment('/var/tmp/file.tar.gz'); // Add attachments
     //   $mail->addAttachment('/tmp/image.jpg', 'new.jpg'); // Optional name
