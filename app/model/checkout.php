@@ -74,8 +74,8 @@ class Checkout
             $mailer->Host = 'smtp.gmail.com';
             $mailer->Port = 587;
             $mailer->SMTPAuth = true;
-            $mailer->Username = 'huutai90909@gmail.com';
-            $mailer->Password = 'azbk ohrl bjxy ktrx';
+            $mailer->Username = '@gmail.com';
+            $mailer->Password = 'hhhhhhh';
 
             $mailer->setFrom('huutai90909@gmail.com', 'Suruchi');
             $mailer->addAddress($email, $first_name . ' ' . $last_name);
